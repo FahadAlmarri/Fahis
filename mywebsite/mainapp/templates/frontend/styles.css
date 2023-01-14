@@ -1,0 +1,469 @@
+@font-face {
+    font-family: myFirstFont;
+    src: url(GE_Dinar_One_Medium.ttf);
+  }
+
+body{
+    background-color:#EDF1F3;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+   font-family: myFirstFont;
+    
+}
+
+/*----------------- Header Below ---------------*/
+
+.header{
+    width: 100%;
+    height: 96px;
+    background-color: white;
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    font-size:18px
+    
+}
+.left-side{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 324px;
+
+}
+.language-en{
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
+}
+.language-pic{
+    height: 32px;
+    filter: invert(17%) sepia(97%) saturate(3030%) hue-rotate(262deg) brightness(90%) contrast(92%);
+    margin-right:8px ;
+}
+
+.login{
+    
+
+}
+
+.right-side{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 350px;
+}
+
+.history{
+    display: flex;
+    align-items: center;
+}
+
+.history-text{
+    float: left;
+    margin-right: 5;
+}
+.folder{
+    height: 32px;
+    filter: invert(17%) sepia(97%) saturate(3030%) hue-rotate(262deg) brightness(90%) contrast(92%);
+    
+}
+.logo{
+    height: 84px;
+    margin-right: 34px;
+}
+
+/*----------------- Main Box Below ---------------*/
+.main-box{
+
+    margin-top: 96px;
+    width: 800px;
+    height: 418px;
+    position: relative;
+    font-size: 22;
+    font-weight: bold;
+    
+}
+.file-button{
+    background: white;
+    width: 49%;
+    height: 92px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 0;
+    border-radius: 8px 8px 0 0;
+    transition-duration:450ms ;
+}
+
+.url-button{
+    background-color: #E5E8EB;
+    width: 49%;
+    height: 92px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    border-radius: 8px 8px 0 0;
+    left: 0;
+    transition-duration:450ms ;
+    cursor:pointer;
+    
+}
+/*.url-button:hover{
+    color: #712DC8;
+    
+}*/
+
+.bottom-box{
+    background-color: white;
+    height: 325px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    border-radius: 0 0 8px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.drag-box{
+    border-width: 1px;
+    
+    height: 84%;
+    width: 84%;
+    border-style: dashed;
+    border-collapse: separate;
+    border-spacing: 200px;
+    border-radius: 0 0 8px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+   
+}
+
+.url-box{
+    width: 80%;
+    display: none;
+    position: relative;
+
+}
+.url-field{
+    
+   
+    width: 100%;
+    text-align: right;
+   
+}
+.text{
+    margin-bottom: 10;
+}
+.text-field{
+    width: 100%;
+    height: 48px;
+    border-color: rgb(179, 179, 179);
+    border-style:solid;
+    border-width: 1;
+    border-radius: 8px;
+    
+}
+::placeholder{
+    font-size: 16px;
+    text-align: right;
+    font-family: myFirstFont;
+    opacity: 0.5;
+    margin-right:10px ;
+}
+
+.cloud-img{
+    height: 64px;
+    filter: invert(17%) sepia(97%) saturate(3030%) hue-rotate(262deg) brightness(90%) contrast(92%);
+   
+   
+
+}
+h3{
+    font-size: 16px;
+    line-height: 1.5;
+    margin-top: 8;
+    font-weight: normal;
+}
+span{
+    color: #712DC8;
+}
+
+/*----------------- Result Page Below ---------------*/
+
+.result-box{
+    margin-top: 60px;
+    height: 70%;
+    width: 94%;
+    padding: 4rem;
+}
+
+.top-section{
+   
+    width: 100%;
+    height: 70%;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+   
+
+    
+}
+
+.title-container{
+    width: 80%;
+   
+    position: relative;
+    overflow:hidden;
+}
+h1{
+    font-size: 24px;
+    margin: 0;
+    margin-bottom: 15px;
+}
+.result-title{
+    background-color: white;
+    width: 100%;
+    height: 90%;
+    border-radius: 8px;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+.row-container{
+    
+    width: 90%;
+    height: 25%;
+    text-align: right;
+    font-family: sans-serif;
+    font-size: 1rem;
+    margin: 20px 0;
+    
+    
+}
+
+.row-text{
+    text-overflow:ellipsis;
+    overflow: hidden;
+    direction: rtl;
+    margin: 0 10px;
+}
+
+.boldh3{
+    font-weight: bold;
+    margin-bottom: 10px;
+    
+}
+
+.boldh2{
+    font-family: myFirstFont;
+    font-size: 1.2rem;
+}
+
+.hash{
+    width: 100%;
+    height: 48px;
+    border: 1px solid;
+    border-color: rgba(0, 0, 0, 0.2);
+    background-color:#EDF1F3;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    
+}
+
+
+.result-container{
+    max-width: 42%;
+    margin-left: 80px;
+}
+.result{
+    background-color: white;
+    min-height: 90%;
+    width: 100%;
+    aspect-ratio: 1.1;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    
+}
+
+.bottom-container{
+    padding-top:15;
+}
+
+.bottom-section{
+    background-color: white;
+    width:100%;
+    min-height: 173;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    flex-wrap: wrap;
+}
+
+.bottom-cell{
+    
+    min-width: 180px;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    text-align: right;
+    padding: 20px 60px;
+}
+
+.cell-text{
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+.cell-span{
+    color: rgba(0, 0, 0, 0.42);
+    font-size:16px;
+    margin: 0;
+    font-family: myfirstfont;
+}
+
+.bottom-icons{
+    height: 32px;
+    opacity: 0.42;
+    padding: 0 10px;
+}
+
+.windows{
+    height: 16px;
+    
+}
+
+/* ----- The actual thing ----- */
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+.circular-progress{
+   position: relative;
+    width: 55%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: conic-gradient(#00843D 3.6deg, #ededed 0deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.circular-progress::before{
+    content: "";
+   position: absolute;
+    width: 85%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: #fff;
+}
+.progress-value{
+    position: relative;
+    font-family: poppins;
+    font-size: 40px;
+    font-weight: 600;
+    color: #00843D;
+}
+
+.result-decision{
+    background-color: #00843D;
+    width: 33%;
+    height: 38px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: normal;
+    font-size: 1.3rem;
+}
+
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*----------------- Modal Box Below ---------------
+.modal{
+    position: fixed;
+    background-color: white;
+    width: 570px;
+    aspect-ratio: 1;
+    padding: 30px;
+    padding-top: 20px;
+    border-radius: 8px;
+}
+
+.modal-header{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 60px;
+}
+
+.close{
+    cursor: pointer;
+    background: none;
+    outline: none;
+    border: none;
+    font-size: 40px;
+    margin: 0;
+    color: #712DC8;
+}
+
+.drop-body{
+    
+    text-align: right;
+    
+    
+    
+}
+
+.dropdown{
+    width: 100%;
+    height: 48px;
+    direction: rtl;
+    background-color: #EDF1F3;
+    border-color: rgba(0, 0, 0, 0.2);
+    
+  
+}*/
+
