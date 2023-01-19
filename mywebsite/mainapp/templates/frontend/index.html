@@ -1,61 +1,73 @@
 <html>
 
 <head>
-    <title>Upload File</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="upload_sample.js"></script>
+  <title>Upload File</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="upload_sample.js"></script>
 </head>
 
 <body>
-    <div class="header">
-        <div class="left-side">
-            <div class=" language-en">
-                <img class="language-pic" src="images/language.svg" alt="">
-                <div class="en">English</div>
-            </div>
-            <div class="login">تسجيل الدخول</div>
+
+  <nav class="header">
+    <div class="left-side">
+      <a href="#">
+        <div class=" language-en">
+          <img class="language-pic" src="images/language.svg" alt="">
+          <div class="en">English</div>
         </div>
-        <div class="right-side">
-            <div class="history">
-                <div class="history-text">الفحوصات السابقة</div>
-                <img class="folder" src="images/folder.svg" alt="">
-            </div>
-            <img class="logo" src="images/fahis_logo.jpg" alt="Fahis">
+      </a>
+      <a href="">
+        <div class="login">تسجيل الدخول</div>
+    </div></a>
+    <div class="right-side">
+      <a href="history.html">
+        <div class="history">
+          <div class="history-text">
+            الفحوصات السابقة
+          </div>
+          <img class="folder" src="images/folder.svg" alt="">
         </div>
+      </a>
+      <a href="index.html"><img class="logo" src="images/fahis_logo.jpg" alt="Fahis"></a>
+    </div>
+  </nav>
+
+
+  <div class="main-box">
+    <div class="top-buttons">
+
+      <div class="url-button" onclick="clicked('url-button')" onmouseover="purple('url-button')"
+        onmouseout="black('url-button')">رابط</div>
+      <div class="file-button" onclick="clicked('file-button')" onmouseover="purple('file-button')"
+        onmouseout="black('file-button')">ملف</div>
     </div>
 
-    <div class="main-box">
-        <div class="file-button" onclick="clicked('file-button')" onmouseover="purple('file-button')"
-            onmouseout="black('file-button')">ملف</div>
-        <div class="url-button" onclick="clicked('url-button')" onmouseover="purple('url-button')"
-            onmouseout="black('url-button')">رابط</div>
+    <div class="bottom-box">
+      <div class="drag-box">
+        <div>
+          <img class="cloud-img" src="images/cloud-upload.png" alt="Upload">
+          <h3>
+            اسحب الملف هنا
+            <br>أو تصفح ملفاتك لرفع الملف المراد
 
-        <div class="bottom-box">
-            <div class="drag-box">
-                <div>
-                    <img class="cloud-img" src="images/cloud-upload.png" alt="Upload">
-                    <h3>
-                        اسحب الملف هنا
-                        <br>أو تصفح ملفاتك لرفع الملف المراد
-
-                        <span id="spn">هنا</span>
-                </div>
-                </h3>
-            </div>
-            <div class="url-box">
-                <img class="cloud-img" src="images/link.svg" alt="Upload">
-                <div class="url-field">
-                    <h3 class="text">
-                        :الرجاء ادخال الرابط
-                    </h3>
-                    <input class="text-field" type="text" placeholder="                       الرجاء ادخال الرابط هنا">
-                    </input>
-                </div>
-            </div>
+            <span id="spn">هنا</span>
         </div>
+        </h3>
+      </div>
+      <div class="url-box">
+        <img class="cloud-img" src="images/link.svg" alt="Upload">
+        <div class="url-field">
+          <h3 class="text">
+            :الرجاء ادخال الرابط
+          </h3>
+          <input class="text-field" type="text" placeholder="                       الرجاء ادخال الرابط هنا">
+          </input>
+        </div>
+      </div>
     </div>
+  </div>
 
-    <!--
+  <!--
     <div class="modal">
         <div class="modal-header">
             <button class="close">&times;</button>

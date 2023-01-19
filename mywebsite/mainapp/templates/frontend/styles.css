@@ -1,71 +1,74 @@
 @font-face {
-    font-family: myFirstFont;
+    font-family: arabicFont;
     src: url(GE_Dinar_One_Medium.ttf);
   }
+  
+  
 
 body{
     background-color:#EDF1F3;
     margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     text-align: center;
-   font-family: myFirstFont;
+    font-family: arabicFont, sans-serif;
+    padding: 0;
     
 }
 
 /*----------------- Header Below ---------------*/
 
 .header{
-    width: 100%;
-    height: 96px;
     background-color: white;
-    position: absolute;
-    top: 0;
     display: flex;
     align-items: center;
     justify-content:space-between;
-    font-size:18px
+    font-size:18px;
+    padding: 0.4rem 1rem;
     
 }
 .left-side{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 324px;
+    gap: 4rem;
+    text-align: left;
+    height: 100%;
 
 }
 .language-en{
     display: flex;
     align-items: center;
-    margin-left: 30px;
+    gap: 0.5rem;
+  
 }
 .language-pic{
     height: 32px;
     filter: invert(17%) sepia(97%) saturate(3030%) hue-rotate(262deg) brightness(90%) contrast(92%);
-    margin-right:8px ;
+   
 }
 
 .login{
-    
-
+    padding: 0 0.5rem;
 }
 
 .right-side{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 350px;
+    gap: 4rem;
+    
 }
 
 .history{
     display: flex;
     align-items: center;
+    justify-content: right;
+    text-align: right;
+    
 }
 
 .history-text{
-    float: left;
-    margin-right: 5;
+    margin: 0 0.5rem;
+    
 }
 .folder{
     height: 32px;
@@ -74,29 +77,61 @@ body{
 }
 .logo{
     height: 84px;
-    margin-right: 34px;
+    
+}
+
+.header a{
+    color: black;
+    text-decoration: none;
+    
+}
+a:hover{
+    background-color: rgba(0, 0, 0, 0.05);
+    transition: 400ms;
+    
+}
+
+@media(max-width: 660px ) {
+    
+    .left-side {
+        gap: 1rem;
+    }
+    .right-side{
+        gap: 1rem;
+    }
+
+   
+    
+    
 }
 
 /*----------------- Main Box Below ---------------*/
 .main-box{
 
-    margin-top: 96px;
     width: 800px;
+    max-width: 90%;
     height: 418px;
+    max-height: 60%;
+ 
+ 
     position: relative;
+    left: 50%;
+    top:calc(50% - 2.8rem);
+    transform: translate(-50%, -50%);
     font-size: 22;
     font-weight: bold;
-    
+}
+
+.top-buttons{
+    display: flex;
+    justify-content: space-between;
 }
 .file-button{
     background: white;
     width: 49%;
     height: 92px;
-    display: flex;
+    display: grid;
     align-items: center;
-    justify-content: center;
-    position: absolute;
-    right: 0;
     border-radius: 8px 8px 0 0;
     transition-duration:450ms ;
 }
@@ -105,12 +140,10 @@ body{
     background-color: #E5E8EB;
     width: 49%;
     height: 92px;
-    display: flex;
+    display: grid;
     align-items: center;
-    justify-content: center;
-    position: absolute;
+    
     border-radius: 8px 8px 0 0;
-    left: 0;
     transition-duration:450ms ;
     cursor:pointer;
     
@@ -122,14 +155,12 @@ body{
 
 .bottom-box{
     background-color: white;
-    height: 325px;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
+    height: calc(100% - 92px);
     border-radius: 0 0 8px 8px;
     display: flex;
     align-items: center;
-    justify-content: center
+    justify-content: center;
+    border-top: 1px solid rgba(0, 0, 0, 0.06)
 }
 
 .drag-box{
@@ -155,13 +186,11 @@ body{
 
 }
 .url-field{
-    
    
-    width: 100%;
-    text-align: right;
    
 }
 .text{
+    text-align: right;
     margin-bottom: 10;
 }
 .text-field{
@@ -176,7 +205,7 @@ body{
 ::placeholder{
     font-size: 16px;
     text-align: right;
-    font-family: myFirstFont;
+    font-family: arabicFont;
     opacity: 0.5;
     margin-right:10px ;
 }
@@ -199,31 +228,54 @@ span{
 }
 
 /*----------------- Result Page Below ---------------*/
-
+@media (max-width:1170px) {
+    .title-container{
+        max-width: 50%;
+    }
+    .result-container{
+        max-width: 40%;
+    }
+    .result{
+        width: 100%;
+        aspect-ratio: none;
+        
+    }
+    
+}
 .result-box{
     margin-top: 60px;
-    height: 70%;
     width: 94%;
-    padding: 4rem;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+
+   
 }
 
 .top-section{
-   
-    width: 100%;
-    height: 70%;
+    height: 30rem;
     display: flex;
     justify-content: space-between;
     position: relative;
-   
+    gap: 2.5rem;
+}
+@media(max-width: 660px ) {
+    .top-section{
+        height: 20rem;
+        margin-bottom: 1rem;
+    }
 
+    .progress-value{
+        font-size: 2.5vh; 
+    }
     
 }
 
 .title-container{
     width: 80%;
-   
+    height: 100%;
     position: relative;
-    overflow:hidden;
+    
 }
 h1{
     font-size: 24px;
@@ -232,13 +284,13 @@ h1{
 }
 .result-title{
     background-color: white;
-    width: 100%;
-    height: 90%;
+    min-height: 90%;
     border-radius: 8px;
     display: flex;
     justify-content:center;
     align-items: center;
     flex-direction: column;
+    gap: 3.5rem;
     
 }
 
@@ -249,9 +301,6 @@ h1{
     text-align: right;
     font-family: sans-serif;
     font-size: 1rem;
-    margin: 20px 0;
-    
-    
 }
 
 .row-text{
@@ -268,12 +317,11 @@ h1{
 }
 
 .boldh2{
-    font-family: myFirstFont;
+    font-family: arabicFont;
     font-size: 1.2rem;
 }
 
 .hash{
-    width: 100%;
     height: 48px;
     border: 1px solid;
     border-color: rgba(0, 0, 0, 0.2);
@@ -286,13 +334,14 @@ h1{
 
 
 .result-container{
-    max-width: 42%;
-    margin-left: 80px;
+    
+    position: relative;
+    
 }
 .result{
+    position: relative;
     background-color: white;
-    min-height: 90%;
-    width: 100%;
+    height: 90%;
     aspect-ratio: 1.1;
     border-radius: 8px;
     display: flex;
@@ -339,7 +388,7 @@ h1{
     color: rgba(0, 0, 0, 0.42);
     font-size:16px;
     margin: 0;
-    font-family: myfirstfont;
+    font-family: arabicFont;
 }
 
 .bottom-icons{
@@ -353,7 +402,7 @@ h1{
     
 }
 
-/* ----- The actual thing ----- */
+/* ----- Score progress ----- */
 
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
@@ -371,15 +420,16 @@ h1{
 .circular-progress::before{
     content: "";
    position: absolute;
-    width: 85%;
+    width: 83%;
     aspect-ratio: 1;
     border-radius: 50%;
     background-color: #fff;
+    padding: 0.2rem;
 }
 .progress-value{
     position: relative;
     font-family: poppins;
-    font-size: 40px;
+    font-size: 3.5vh;
     font-weight: 600;
     color: #00843D;
 }
@@ -398,72 +448,151 @@ h1{
 }
 
 
-  
-  
-  
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*----------------- Modal Box Below ---------------
-.modal{
-    position: fixed;
-    background-color: white;
-    width: 570px;
-    aspect-ratio: 1;
-    padding: 30px;
-    padding-top: 20px;
-    border-radius: 8px;
+/* ----------- History -------- */
+.history-container{
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 2rem;
+    width: 96%;
+    min-height:86% ;
+    position: relative;
 }
 
-.modal-header{
+.history-top{
     display: flex;
     justify-content: space-between;
-    margin-bottom: 60px;
 }
 
-.close{
-    cursor: pointer;
-    background: none;
-    outline: none;
-    border: none;
-    font-size: 40px;
-    margin: 0;
-    color: #712DC8;
-}
-
-.drop-body{
-    
-    text-align: right;
-    
-    
+.general-history{
+    background: white;
+    width: 49%;
+    height: 92px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px 8px 0 0;
+    transition-duration:450ms ;
     
 }
 
-.dropdown{
-    width: 100%;
+.your-history{
+    background: #E5E8EB;
+    width: 49%;
+    height: 92px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px 8px 0 0;
+    transition-duration:450ms ;
+    
+}
+
+.history-bottom-box{
+    background-color: white;
+    top: 92px;
+    width: calc(100% - 160px);
+    min-height: calc(100% - 252px);
+    border-top: 1px black solid;
+    border-color: rgba(0, 0, 0, 0.08);
+    padding: 80px;
+    
+}
+
+.search-container{
     height: 48px;
-    direction: rtl;
-    background-color: #EDF1F3;
-    border-color: rgba(0, 0, 0, 0.2);
-    
-  
-}*/
+    max-width: 720px;
+    position: relative;
+    display: flex;
+    margin-bottom: 2.5rem;
+}
 
+.search-button{
+    border: none;
+    background-color: #712DC8;
+    height: 100%;
+    aspect-ratio: 1;
+    cursor: pointer;
+    margin: 0;
+    
+}
+.search-button:hover{
+    opacity: 0.9;
+}
+
+.search-icon{
+    height: 32px;
+    filter: invert(100%) sepia(100%) saturate(2%) hue-rotate(322deg) brightness(102%) contrast(101%);
+}
+
+.search-field{
+    height: 48;
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    background-color:  #E5E8EB;
+    direction: rtl;
+    
+}
+
+table{
+   
+    width: 100%;
+    text-align: center;
+    border-collapse:collapse;
+    min-width: 600px;
+    
+}
+td{
+    padding: 1rem;
+}
+
+  
+  
+
+table tbody tr{
+    background-color: #E7E7E7;
+    border-bottom:1rem solid white ;
+    height: 96px;
+    
+}
+
+table tbody{
+    
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+   
+}
+
+table a{
+    text-decoration: none;
+    color: #1773C8;
+    padding: 0.5rem;
+}
+
+table tbody tr td:first-child {
+    border-radius: 8px 0 0 8px;
+  }
+  
+  table tbody tr td:last-child {
+    border-radius: 0 8px 8px 0;
+  }
+
+  table tbody tr td:nth-child(2){
+    
+
+  }
+  
+  .table-result{
+    background-color: #00843D;
+    width: 65%;
+    height: 38px;
+    border-radius: 8px;
+    display: grid;
+    align-items: center;
+    color: white;
+    font-weight: normal;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  

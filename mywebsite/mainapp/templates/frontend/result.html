@@ -1,100 +1,108 @@
 <html>
 
 <head>
-    <title>Result page</title>
-    <link rel="stylesheet" href="styles.css">
-    
+  <title>Result page</title>
+  <link rel="stylesheet" href="styles.css">
+
 </head>
 
 <body>
-    <div class="header">
-        <div class="left-side">
-            <div class=" language-en">
-                <img class="language-pic" src="images/language.svg" alt="">
-                <div class="en">English</div>
-            </div>
-            <div class="login">تسجيل الدخول</div>
+  <nav class="header">
+    <div class="left-side">
+      <a href="#">
+        <div class=" language-en">
+          <img class="language-pic" src="images/language.svg" alt="">
+          <div class="en">English</div>
         </div>
-        <div class="right-side">
-            <div class="history">
-                <div class="history-text">الفحوصات السابقة</div>
-                <img class="folder" src="images/folder.svg" alt="">
-            </div>
-            <img class="logo" src="images/fahis_logo.jpg" alt="Fahis">
+      </a>
+      <a href="">
+        <div class="login">تسجيل الدخول</div>
+    </div></a>
+    <div class="right-side">
+      <a href="history.html">
+        <div class="history">
+          <div class="history-text">
+            الفحوصات السابقة
+          </div>
+          <img class="folder" src="images/folder.svg" alt="">
         </div>
+      </a>
+      <a href="index.html"><img class="logo" src="images/fahis_logo.jpg" alt="Fahis"></a>
     </div>
-    <div class="result-box">
-        <div class="top-section">
-            <div class="title-container">
-                <h1>العنوان</h1>
-                <div class="result-title">
-                    <div class="row-container">
-                        <h3 class="boldh3">SHA256</h3>
-                        <div class="hash">
-                            <h3 class="row-text"> adcec5cde869fa0240860f33c011dce74295a50e901cb18c38515083f835de60
-                            </h3>
-                        </div>
-                    </div>
-                    <div class="row-container">
-                        <h2 class="boldh2">الرابط</h2>
-                        <div class="hash">
-                            <h3 class="row-text"> لا يوجد
-                            </h3>
-                        </div>
-                    </div>
-                </div>
+  </nav>
+
+  <div class="result-box">
+    <div class="top-section">
+      <div class="title-container">
+        <h1>العنوان</h1>
+        <div class="result-title">
+          <div class="row-container">
+            <h3 class="boldh3">SHA256</h3>
+            <div class="hash">
+              <h3 class="row-text"> adcec5cde869fa0240860f33c011dce74295a50e901cb18c38515083f835de60
+              </h3>
             </div>
-            <div class="result-container">
-                <h1>النتيجة</h1>
-                <div class="result">
-                    <div class="circular-progress">
-                        <span class="progress-value">0%</span>
-                    </div>
-                    <div class="result-decision">
-                        آمن
-                    </div>
-                </div>
+          </div>
+          <div class="row-container">
+            <h2 class="boldh2">الرابط</h2>
+            <div class="hash">
+              <h3 class="row-text"> لا يوجد
+              </h3>
             </div>
+          </div>
         </div>
-        <div class="bottom-container">
-            <h1>معلومات الارسال</h1>
-            <div class="bottom-section">
-                <div class="bottom-cell">
-                    <div>
-                        <h3 class="cell-text">
-                        <span class="cell-span">
-                            بيئة التحليل
-                        </span>
-                        <br>
-                            Windows 7
-                        <img class="windows" src="images/windows.svg" alt="">
-                    </h3>
-                    </div>
-                    <img class="bottom-icons" src="images/desktop.svg" alt="">
-                </div>
-                <div class="bottom-cell">
-                    <h3 class="cell-text">
-                        <span class="cell-span">
-                            التاريخ والوقت
-                        </span>
-                        <br>
-                        14/1/2023 10:55
-                    </h3>
-                    <img class="bottom-icons" src="images/calendar.svg" alt="">
-                </div>
-                <div class="bottom-cell">
-                    <h3 class="cell-text">
-                        <span class="cell-span">مقدمة من
-                        </span>
-                        <br>
-                        yousef@gmail.com
-                    </h3>
-                    <img class="bottom-icons" src="images/person.svg" alt="">
-                </div>
-            </div>
+      </div>
+      <div class="result-container">
+        <h1>النتيجة</h1>
+        <div class="result">
+          <div class="circular-progress">
+            <span class="progress-value">0%</span>
+          </div>
+          <div class="result-decision">
+            آمن
+          </div>
         </div>
+      </div>
     </div>
-    <script src="upload_sample.js"></script>
+    <div class="bottom-container">
+      <h1>معلومات الارسال</h1>
+      <div class="bottom-section">
+        <div class="bottom-cell">
+          <div>
+            <h3 class="cell-text">
+              <span class="cell-span">
+                بيئة التحليل
+              </span>
+              <br>
+              Windows 7
+              <img class="windows" src="images/windows.svg" alt="">
+            </h3>
+          </div>
+          <img class="bottom-icons" src="images/desktop.svg" alt="">
+        </div>
+        <div class="bottom-cell">
+          <h3 class="cell-text">
+            <span class="cell-span">
+              التاريخ والوقت
+            </span>
+            <br>
+            14/1/2023 10:55
+          </h3>
+          <img class="bottom-icons" src="images/calendar.svg" alt="">
+        </div>
+        <div class="bottom-cell">
+          <h3 class="cell-text">
+            <span class="cell-span">مقدمة من
+            </span>
+            <br>
+            yousef@gmail.com
+          </h3>
+          <img class="bottom-icons" src="images/person.svg" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="upload_sample.js"></script>
 </body>
 
 </html>
