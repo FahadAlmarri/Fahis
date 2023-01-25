@@ -3,7 +3,7 @@
 <head>
   <title>Upload File</title>
   <link rel="stylesheet" href="styles.css">
-  <script src="upload_sample.js"></script>
+  <script src="js/upload_sample.js"></script>
 </head>
 
 <body>
@@ -16,7 +16,7 @@
           <div class="en">English</div>
         </div>
       </a>
-      <a href="">
+      <a href="login.html">
         <div class="login">تسجيل الدخول</div>
     </div></a>
     <div class="right-side">
@@ -66,28 +66,59 @@
       </div>
     </div>
   </div>
+  <button class="main-button" id="next-button">التالي</button>
 
   <!--
-    <div class="modal">
-        <div class="modal-header">
-            <button class="close">&times;</button>
-            <h2>خيارات التحليل</h2>
-        </div>
-        <div class="modal-body">
-            <div class="drop-body">
-                <h3 class="text">
-                    :الرجاء ادخال الرابط
-                </h3>
-                <select class="dropdown" aria-placeholder="fdsddfds" name="catg" >
-                    <option value="Windows 7 32bit">ويندوز 7 32 بيت</option>
-                </select>
-            </div>
-        </div>
-        <button class="modal-button"></button>
+    1- Login (DONE) /Register page (function eye hide show password)
+    2- Report Details
+    3- modal box (DONE)
+    4- main page Button (DONE)
+    5- function history
+    6- Table pages
+    7- English
+    8- Drag and Drop
+  -->
+
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <button id="close" class="close">&times;</button>
+      <h2>خيارات التحليل</h2>
     </div>
-    -->
+    <div class="modal-body">
+      <div class="drop-container">
+        <h3 class="text">
+          :بيئة التحليل
+        </h3>
+        <select class="dropdown" placeholder="fdsddfds" name="catg">
+          <option value="Windows 7">
+            ويندوز
+            7
+          </option>
+          <option value="" disabled>ويندوز 10</option>
+          <option value="" disabled>ويندوز 11</option>
+          <option value="" disabled>لينكس 22.04</option>
 
+        </select>
+      </div>
+      <div class="drop-container">
+        <h3 class="text">
+          :نوع التحليل
+        </h3>
+        <select class="dropdown" placeholder="fdsddfds" name="catg">
+          <option value="Windows 7">عام</option>
+          <option value="Windows 7">خاص</option>
 
+        </select>
+      </div>
+      <button class="main-button">التالي</button>
+
+    </div>
+
+  </div>
+
+  <div class="overlay" id="overlay"></div>
+
+  <script type="text/javascript" src="js/modal.js"></script>
 
 </body>
 
