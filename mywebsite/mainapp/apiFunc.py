@@ -14,7 +14,8 @@ def uploadfile(uploaded_file):
     hashed_temp = hash(temp)
     print(hashed_temp)
     if(checkDublicateFiles(hashed_temp)==False):
-        reportID = random.randint(0,1000)
+        reportID=file_api(temp)
+        print(reportID)
         file_dic[hashed_temp]=reportID
         Report.objects.create(Report_ID = reportID)
         pickle.dump(file_dic,open('file_dic.json',mode='wb'))
@@ -33,8 +34,10 @@ def getreport():
         HEADERS = {"Authorization": "Bearer 4THnM7z6a1T3NcqP8KHUGg"}
         r = requests.get(REST_URL, headers=HEADERS )
         score = r.json()["info"]["score"]
-        Report.objects.filter(Report_ID = task_queue[0]).update(others=score)
         print(score)
+        score_as_string=str(score)
+        Report.objects.filter(Report_ID = task_queue[0]).update(Others=score_as_string)
+        
         
         task_queue.pop(0)
         print(task_queue)
