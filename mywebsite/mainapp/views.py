@@ -1,42 +1,47 @@
 from django.shortcuts import render, HttpResponseRedirect, redirect
 from .models import Sample
-import hashlib
-from django.core.files.uploadedfile import TemporaryUploadedFile
+import pickle
 from django.urls import reverse
+from .apiFunc import *
+
 # Create your views here.
-file_dic={}
+
+
+
+def report(request,reportID):
+	#report=getreport(reportID)
+	context={"task_id":reportID}
+	return render(request,'mainapp/report.html',context)
 
 def home(request):
-	try:
 		if(request.method=='POST'):
 			uploaded_file=request.FILES['file']
-			temp = TemporaryUploadedFile(charset=uploaded_file.charset, name=uploaded_file.name, content_type=uploaded_file.content_type, size= uploaded_file.size)
+			temp = uploaded_file
 			hashed_temp = hash(temp)
+			print(hashed_temp)
 			if(checkDublicateFiles(hashed_temp)==False):
-				# get reportID
-				# file_dic[hashed_temp]=reportID
-				pass	
+
+				reportID=file_api(temp)
+				file_dic[hashed_temp]=reportID
+				
+				pickle.dump(file_dic,open('file_dic.json',mode='wb'))
+			else:
+				reportID=file_dic[hashed_temp]
+				
 			#redirct to report
-			return redirect(reverse('report'))
-	except:
-		pass
+			return redirect(f"report/{reportID}")
+			 
+	
 		
-	return render(request, 'mainapp/home.html', {})
+		return render(request, 'mainapp/home.html', {})
 
-def report(request):
-	return render(request,'mainapp/report.html')
 
-def checkDublicateFiles(hash):
-	if hash in file_dic:
-		return True
-	else: return False
 
-def hash(file):
-	file.open(mode='rb')
-	bytes = file.read() 
-	readable_hash = hashlib.sha256(bytes).hexdigest()
-	return readable_hash
 
 def dbList(rquest):
 	sample_list = Sample.objects.all()
 	return render(rquest, 'mainapp/dbList.html', {'sample_list': sample_list})
+
+# Add your code to error checking for r.status_code.
+
+	
