@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponseRedirect, redirect
-from .models import Sample
+from .models import *
 import pickle
 from django.urls import reverse
 from .apiFunc import *
@@ -16,23 +16,9 @@ def report(request,reportID):
 def home(request):
 		if(request.method=='POST'):
 			uploaded_file=request.FILES['file']
-			temp = uploaded_file
-			hashed_temp = hash(temp)
-			print(hashed_temp)
-			if(checkDublicateFiles(hashed_temp)==False):
-
-				reportID=file_api(temp)
-				file_dic[hashed_temp]=reportID
-				
-				pickle.dump(file_dic,open('file_dic.json',mode='wb'))
-			else:
-				reportID=file_dic[hashed_temp]
-				
+			reportID=uploadfile(uploaded_file)	
 			#redirct to report
 			return redirect(f"report/{reportID}")
-			 
-	
-		
 		return render(request, 'mainapp/home.html', {})
 
 

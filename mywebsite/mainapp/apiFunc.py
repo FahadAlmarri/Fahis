@@ -1,14 +1,27 @@
 import requests
 import hashlib
-import requests
 import pickle
 from apscheduler.schedulers.background import BackgroundScheduler
 from django.urls import reverse
+from .models import *
+import random
 file_dic=pickle.load(open('file_dic.json',mode='rb'))
 
 task_queue=[]
 
-
+def uploadfile(uploaded_file):
+    temp = uploaded_file
+    hashed_temp = hash(temp)
+    print(hashed_temp)
+    if(checkDublicateFiles(hashed_temp)==False):
+        reportID = random.randint(0,1000)
+        file_dic[hashed_temp]=reportID
+        Report.objects.create(Report_ID = reportID)
+        pickle.dump(file_dic,open('file_dic.json',mode='wb'))
+    else:
+        reportID=file_dic[hashed_temp]
+    Sample.objects.create(ReportID = reportID, Privacy_Type ='public', Create_Date ='2022-12-27 12:21:46', Sample_Type ='file', UserID =1, Sample_Address = hashed_temp)
+    return reportID
 def getreport():
     
     if len(task_queue) ==0:
@@ -19,7 +32,9 @@ def getreport():
         REST_URL = f"http://localhost:8900/tasks/report/{task_queue[0]}"
         HEADERS = {"Authorization": "Bearer 4THnM7z6a1T3NcqP8KHUGg"}
         r = requests.get(REST_URL, headers=HEADERS )
-        print(r.json()["info"]["score"])
+        score = r.json()["info"]["score"]
+        Report.objects.filter(Report_ID = task_queue[0]).update(others=score)
+        print(score)
         
         task_queue.pop(0)
         print(task_queue)
