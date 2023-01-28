@@ -203,7 +203,12 @@ a:hover{
     align-items: center;
     justify-content: center;
     position: relative;
-   
+    cursor: pointer;
+
+}
+
+.drag-box:hover{
+    border-color: #712dc8;
 }
 
 .url-box{

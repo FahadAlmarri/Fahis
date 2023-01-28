@@ -14,11 +14,11 @@ def report(request,reportID):
 	return render(request,'frontend/result.html',context)
 
 def home(request):
-		if(request.method=='POST'):
-			uploaded_file=request.FILES['file']
-			reportID=uploadfile(uploaded_file)	
+		#if(request.method=='POST'):
+			#uploaded_file=request.FILES['file']
+			#reportID=uploadfile(uploaded_file)	
 			#redirct to report
-			return redirect(f"report/{reportID}")
+			#return redirect(f"report/{reportID}")
 		return render(request, 'frontend/index.html', {},)
 
 def login(request):

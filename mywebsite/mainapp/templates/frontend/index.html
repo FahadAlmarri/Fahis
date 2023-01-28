@@ -33,39 +33,44 @@
     </div>
   </nav>
 
-  <div class="main-box">
-    <div class="top-buttons">
+  <form method="post" enctype="multipart/form-data">
+    <div class="main-box">
+      <div class="top-buttons">
 
-      <div class="url-button" onclick="clicked('url-button')" onmouseover="purple('url-button')"
-        onmouseout="black('url-button')">رابط</div>
-      <div class="file-button" onclick="clicked('file-button')" onmouseover="purple('file-button')"
-        onmouseout="black('file-button')">ملف</div>
-    </div>
+        <div class="url-button" onclick="clicked('url-button')" onmouseover="purple('url-button')"
+          onmouseout="black('url-button')">رابط</div>
+        <div class="file-button" onclick="clicked('file-button')" onmouseover="purple('file-button')"
+          onmouseout="black('file-button')">ملف</div>
+      </div>
 
-    <div class="bottom-box">
-      <div class="drag-box">
-        <div>
-          <img class="cloud-img" src="{% static 'images/cloud-upload.png' %}" alt="Upload">
-          <h3>
-            اسحب الملف هنا
-            <br>أو تصفح ملفاتك لرفع الملف المراد
-            <span id="spn">هنا</span>
+      <div class="bottom-box">
+        <div class="drag-box">
+          <div id="drag-content">
+            <img class="cloud-img" src="{% static 'images/cloud-upload.png' %}" alt="Upload">
+            <h3>
+              اسحب الملف هنا
+              <br>أو تصفح ملفاتك لرفع الملف المراد
+              <span id="spn">هنا</span>
+            </h3>
+          </div>
+          <h1 id="file-name" ></h1>
         </div>
-        </h3>
-      </div>
-      <div class="url-box">
-        <img class="cloud-img" src="{% static 'images/link.svg' %}" alt="Upload">
-        <div class="url-field">
-          <h3 class="text">
-            :الرجاء ادخال الرابط
-          </h3>
-          <input class="text-field" type="text" placeholder="                       الرجاء ادخال الرابط هنا">
-          </input>
+        <div class="url-box">
+          <img class="cloud-img" src="{% static 'images/link.svg' %}" alt="Upload">
+          <div class="url-field">
+            <h3 class="text">
+              :الرجاء ادخال الرابط
+            </h3>
+            <input class="text-field" type="text" placeholder="                       الرجاء ادخال الرابط هنا">
+            </input>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <button class="main-button" id="next-button">التالي</button>
+    {% csrf_token %}
+    <input id="browse" type="file" name="file" hidden>
+    <button class="main-button" id="next-button" type="submit">التالي</button>
+  </form>
 
   <!--
     1- Login (DONE) /Register page (function eye hide show password)
@@ -118,6 +123,7 @@
   <div class="overlay" id="overlay"></div>
 
   <script type="text/javascript" src="{% static 'js/modal.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/drag.js' %}"></script>
 
 </body>
 
