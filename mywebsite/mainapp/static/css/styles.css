@@ -136,7 +136,7 @@ a:hover{
 
 /*----------------- Main Box Below ---------------*/
 .main-box{
-
+    
     width: 800px;
     max-width: 90%;
     height: 418px;
@@ -144,7 +144,7 @@ a:hover{
     min-height: 375px;
     position: relative;
     margin: 0 auto;
-    margin-top: 20vh;
+    margin-top: 5vh;
     font-size: 22;
     font-weight: bold;
 }
@@ -770,7 +770,7 @@ table tbody tr td:first-child {
     min-height: 450px;
     position: relative;
     margin: 0 auto;
-    margin-top: 12.5vh;
+    margin-top: 9.5vh;
     background-color: white;
     border-radius: 8px;
     box-sizing: border-box;
@@ -837,8 +837,8 @@ table tbody tr td:first-child {
 /* -------- Register --------*/
 
 .register-box{
-    height: 700px;
-    max-height: 80%;
+    min-height: 700px;
+   
     margin-top: 5vh;
 }
 
