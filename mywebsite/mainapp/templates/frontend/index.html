@@ -33,7 +33,7 @@
     </div>
   </nav>
 
-  <form method="post" enctype="multipart/form-data">
+
     <div class="main-box">
       <div class="top-buttons">
 
@@ -67,10 +67,9 @@
         </div>
       </div>
     </div>
-    {% csrf_token %}
-    <input id="browse" type="file" name="file" hidden>
-    <button class="main-button" id="next-button" type="submit">التالي</button>
-  </form>
+   
+    <button class="main-button" id="next-button">التالي</button>
+  
 
   <!--
     1- Login (DONE) /Register page (function eye hide show password)
@@ -83,12 +82,14 @@
     8- Drag and Drop
   -->
 
-  <div class="modal" id="modal">
+  <div class="modal " id="modal">
+    
     <div class="modal-header">
       <button id="close" class="close">&times;</button>
       <h2>خيارات التحليل</h2>
     </div>
     <div class="modal-body">
+      <form style="width:100%;" method="post" enctype="multipart/form-data">
       <div class="drop-container">
         <h3 class="text">
           :بيئة التحليل
@@ -114,12 +115,14 @@
 
         </select>
       </div>
-      <button class="main-button">التالي</button>
-
+      {% csrf_token %}
+      <input id="browse" type="file" name="file" hidden>
+      <button class="main-button" type="submit">التالي</button>
+    </form>
     </div>
-
+  
   </div>
-
+  
   <div class="overlay" id="overlay"></div>
 
   <script type="text/javascript" src="{% static 'js/modal.js' %}"></script>
