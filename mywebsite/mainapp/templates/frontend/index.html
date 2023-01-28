@@ -1,6 +1,6 @@
-
 <html>
-  {% load static %}
+{% load static %}
+
 <head>
   <title>Upload File</title>
   <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}  ">
@@ -24,7 +24,7 @@
       <a href="/history">
         <div class="history">
           <div class="history-text">
-            الفحوصات السابقة
+            الفحوصات
           </div>
           <img class="folder" src="{% static '/images/folder.svg' %}" alt="">
         </div>
@@ -32,7 +32,7 @@
       <a href="/"><img class="logo" src="{% static 'images/fahis_logo.jpg' %}" alt="Fahis"></a>
     </div>
   </nav>
-  
+
   <div class="main-box">
     <div class="top-buttons">
 
@@ -43,7 +43,7 @@
     </div>
 
     <div class="bottom-box">
-      <div class="drag-box" >
+      <div class="drag-box">
         <div>
           <img class="cloud-img" src="{% static 'images/cloud-upload.png' %}" alt="Upload">
           <h3>
