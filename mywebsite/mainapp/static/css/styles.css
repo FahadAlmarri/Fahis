@@ -12,7 +12,26 @@ body{
     font-family: arabicFont, sans-serif;
     padding: 0;
     position: relative;
+}
+
+input{
+    font-size: 1.2rem;
+    text-align: right;
+    padding: 0 1.2rem;
+    outline: none;
     
+    outline-color: #702dc844 ;
+    transition: 300ms ease-in-out;
+}
+
+input:hover{
+    border-color:#702dc8c0;
+}
+
+input:focus{
+    transition: 75ms ease-in-out;
+    outline: #702dc844 2px solid;
+    border-color:#712dc8;
     
 }
 
@@ -24,8 +43,9 @@ body{
     align-items: center;
     justify-content:space-between;
     font-size:18px;
-    padding: 0.4rem 1rem;
-    
+    padding: 0 1rem;
+    height: 97px;
+    box-sizing: border-box;
 }
 .left-side{
     display: flex;
@@ -34,29 +54,36 @@ body{
     gap: 4rem;
     text-align: left;
     height: 100%;
-
 }
 .language-en{
     display: flex;
     align-items: center;
     gap: 0.5rem;
-  
+    height: 100%;
+    
 }
 .language-pic{
     height: 32px;
     filter: invert(17%) sepia(97%) saturate(3030%) hue-rotate(262deg) brightness(90%) contrast(92%);
-   
+  
 }
 
 .login{
-    padding: 0 0.5rem;
+    margin: 0 0.4rem;
+    display: grid;
+    place-items: center;
+    height: 100%;
+   
 }
+
+
 
 .right-side{
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 4rem;
+    height: 100%;
     
 }
 
@@ -65,7 +92,7 @@ body{
     align-items: center;
     justify-content: right;
     text-align: right;
-    
+    height: 100%;
 }
 
 .history-text{
@@ -185,10 +212,7 @@ a:hover{
     position: relative;
 
 }
-.url-field{
-   
-   
-}
+
 .text{
     text-align: right;
     margin-bottom: 10;
@@ -208,7 +232,6 @@ a:hover{
     text-align: right;
     font-family: arabicFont;
     opacity: 0.5;
-    margin-right:10px ;
 }
 
 .cloud-img{
@@ -722,10 +745,7 @@ table tbody tr td:first-child {
     border-radius: 0 8px 8px 0;
   }
 
-  table tbody tr td:nth-child(2){
-    
 
-  }
   
   .table-result{
     background-color: #00843D;
@@ -758,6 +778,7 @@ table tbody tr td:first-child {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    
     box-shadow: 0px 0px 8px -1px rgba(0,0,0,0.2);
     -webkit-box-shadow: 0px 0px 8px -1px rgba(0,0,0,0.2);
     -moz-box-shadow: 0px 0px 8px -1px rgba(0,0,0,0.2);
@@ -784,6 +805,8 @@ table tbody tr td:first-child {
     align-items: center;
     
 }
+
+
 .mail{
     position: absolute;
     margin: 0 1rem;
@@ -795,7 +818,8 @@ table tbody tr td:first-child {
     position: absolute;
     margin: 0 1rem;
     font-size: 24;
-    filter:invert(17%) sepia(97%) saturate(3030%) hue-rotate(262deg) brightness(90%) contrast(92%);
+    color:#712DC8;
+    cursor: pointer;
 }
 
 .create-account{
@@ -808,4 +832,26 @@ table tbody tr td:first-child {
 .create-account a:hover{
     opacity: 0.85;
     background: none;
+}
+
+/* -------- Register --------*/
+
+.register-box{
+    height: 700px;
+    max-height: 80%;
+    margin-top: 5vh;
+}
+
+.username{
+    display: flex;
+    gap: 2.5rem;
+}
+
+.username div{
+    flex: 1;
+}
+
+/****** forgot ******/
+.forgot-box{
+    height: max-content;
 }

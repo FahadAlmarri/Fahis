@@ -1,8 +1,8 @@
 <html>
-
+  {% load static %}
 <head>
   <title>Result page</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}  ">
 
 </head>
 
@@ -11,23 +11,23 @@
     <div class="left-side">
       <a href="#">
         <div class=" language-en">
-          <img class="language-pic" src="images/language.svg" alt="">
+          <img class="language-pic" src="{% static '/images/language.svg' %}" alt="">
           <div class="en">English</div>
         </div>
       </a>
-      <a href="login.html">
+      <a href="login">
         <div class="login">تسجيل الدخول</div>
     </div></a>
     <div class="right-side">
-      <a href="history.html">
+      <a href="history">
         <div class="history">
           <div class="history-text">
             الفحوصات السابقة
           </div>
-          <img class="folder" src="images/folder.svg" alt="">
+          <img class="folder" src="{% static '/images/folder.svg' %}" alt="">
         </div>
       </a>
-      <a href="index.html"><img class="logo" src="images/fahis_logo.jpg" alt="Fahis"></a>
+      <a href="/"><img class="logo" src="{% static 'images/fahis_logo.jpg' %}" alt="Fahis"></a>
     </div>
   </nav>
 
@@ -53,7 +53,7 @@
         </div>
       </div>
       <div class="result-container">
-        <h1>النتيجة</h1>
+        <h1>النتيجة {{task_id}}</h1>
         <div class="result">
           <div class="circular-progress">
             <span class="progress-value">0%</span>
@@ -75,10 +75,10 @@
               </span>
               <br>
               Windows 7
-              <img class="windows" src="images/windows.svg" alt="">
+              <img class="windows" src="{% static 'images/windows.svg' %}" alt="">
             </h3>
           </div>
-          <img class="bottom-icons" src="images/desktop.svg" alt="">
+          <img class="bottom-icons" src="{% static 'images/desktop.svg' %}" alt="">
         </div>
         <div class="bottom-cell">
           <h3 class="cell-text">
@@ -88,7 +88,7 @@
             <br>
             14/1/2023 10:55
           </h3>
-          <img class="bottom-icons" src="images/calendar.svg" alt="">
+          <img class="bottom-icons" src="{% static 'images/calendar.svg' %}" alt="">
         </div>
         <div class="bottom-cell">
           <h3 class="cell-text">
@@ -97,12 +97,12 @@
             <br>
             yousef@gmail.com
           </h3>
-          <img class="bottom-icons" src="images/person.svg" alt="">
+          <img class="bottom-icons" src="{% static 'images/person.svg' %}" alt="">
         </div>
       </div>
     </div>
   </div>
-  <script src="js/result.js"></script>
+  <script src="{% static 'js/result.js' %}"></script>
 </body>
 
 </html>

@@ -1,9 +1,10 @@
-<html>
 
+<html>
+  {% load static %}
 <head>
   <title>Upload File</title>
-  <link rel="stylesheet" href="styles.css">
-  <script src="js/upload_sample.js"></script>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}  ">
+  <script src="static/js/upload_sample.js"></script>
 </head>
 
 <body>
@@ -12,23 +13,23 @@
     <div class="left-side">
       <a href="#">
         <div class=" language-en">
-          <img class="language-pic" src="images/language.svg" alt="">
+          <img class="language-pic" src="{% static '/images/language.svg' %}" alt="">
           <div class="en">English</div>
         </div>
       </a>
-      <a href="login.html">
+      <a href="login">
         <div class="login">تسجيل الدخول</div>
     </div></a>
     <div class="right-side">
-      <a href="history.html">
+      <a href="history">
         <div class="history">
           <div class="history-text">
             الفحوصات السابقة
           </div>
-          <img class="folder" src="images/folder.svg" alt="">
+          <img class="folder" src="{% static '/images/folder.svg' %}" alt="">
         </div>
       </a>
-      <a href="index.html"><img class="logo" src="images/fahis_logo.jpg" alt="Fahis"></a>
+      <a href="/"><img class="logo" src="{% static 'images/fahis_logo.jpg' %}" alt="Fahis"></a>
     </div>
   </nav>
 
@@ -45,17 +46,16 @@
     <div class="bottom-box">
       <div class="drag-box">
         <div>
-          <img class="cloud-img" src="images/cloud-upload.png" alt="Upload">
+          <img class="cloud-img" src="{% static 'images/cloud-upload.png' %}" alt="Upload">
           <h3>
             اسحب الملف هنا
             <br>أو تصفح ملفاتك لرفع الملف المراد
-
             <span id="spn">هنا</span>
         </div>
         </h3>
       </div>
       <div class="url-box">
-        <img class="cloud-img" src="images/link.svg" alt="Upload">
+        <img class="cloud-img" src="{% static 'images/link.svg' %}" alt="Upload">
         <div class="url-field">
           <h3 class="text">
             :الرجاء ادخال الرابط
@@ -118,7 +118,7 @@
 
   <div class="overlay" id="overlay"></div>
 
-  <script type="text/javascript" src="js/modal.js"></script>
+  <script type="text/javascript" src="{% static 'js/modal.js' %}"></script>
 
 </body>
 

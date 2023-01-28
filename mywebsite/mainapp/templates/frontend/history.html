@@ -1,8 +1,8 @@
 <html>
-
+  {% load static %}
 <head>
   <title>History</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
 </head>
 
@@ -11,23 +11,23 @@
     <div class="left-side">
       <a href="#">
         <div class=" language-en">
-          <img class="language-pic" src="images/language.svg" alt="">
+          <img class="language-pic" src="{% static '/images/language.svg' %}" alt="">
           <div class="en">English</div>
         </div>
       </a>
-      <a href="login.html">
+      <a href="login">
         <div class="login">تسجيل الدخول</div>
     </div></a>
     <div class="right-side">
-      <a href="history.html">
+      <a href="history">
         <div class="history">
           <div class="history-text">
             الفحوصات السابقة
           </div>
-          <img class="folder" src="images/folder.svg" alt="">
+          <img class="folder" src="{% static '/images/folder.svg' %}" alt="">
         </div>
       </a>
-      <a href="index.html"><img class="logo" src="images/fahis_logo.jpg" alt="Fahis"></a>
+      <a href="/"><img class="logo" src="{% static 'images/fahis_logo.jpg' %}" alt="Fahis"></a>
     </div>
   </nav>
 
@@ -43,7 +43,7 @@
     <div class="history-bottom-box">
       <div class="search-container">
         <button class="search-button">
-          <img class="search-icon" src="images/search.svg" alt="">
+          <img class="search-icon" src="{% static 'images/search.svg' %}" alt="">
         </button>
         <input class="search-field" type="text" placeholder="
                 البحث
@@ -91,6 +91,7 @@
       </table>
     </div>
   </div>
+  <script src="{% static 'js/history.js' %}" type="text/javascript"></script>
 </body>
 
 </html>

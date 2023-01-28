@@ -11,7 +11,7 @@ from .apiFunc import *
 def report(request,reportID):
 	#report=getreport(reportID)
 	context={"task_id":reportID}
-	return render(request,'mainapp/report.html',context)
+	return render(request,'frontend/result.html',context)
 
 def home(request):
 		if(request.method=='POST'):
@@ -19,9 +19,19 @@ def home(request):
 			reportID=uploadfile(uploaded_file)	
 			#redirct to report
 			return redirect(f"report/{reportID}")
-		return render(request, 'mainapp/home.html', {})
+		return render(request, 'frontend/index.html', {},)
 
+def login(request):
+	return render(request,'frontend/login.html')
 
+def register(request):
+	return render(request,'frontend/register.html')
+
+def history(request):
+	return render(request,'frontend/history.html')
+
+def forgot(request):
+	return render(request,'frontend/forgot.html')
 
 
 def dbList(rquest):
