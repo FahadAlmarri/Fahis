@@ -8,29 +8,29 @@
 </head>
 
 <body>
-    <nav class="header">
-        <div class="left-side">
-          <a href="#">
-            <div class=" language-en">
-              <img class="language-pic" src="{% static '/images/language.svg' %}" alt="">
-              <div class="en">English</div>
-            </div>
-          </a>
-          <a href="login">
-            <div class="login">تسجيل الدخول</div>
-        </div></a>
-        <div class="right-side">
-          <a href="history">
-            <div class="history">
-              <div class="history-text">
-                الفحوصات السابقة
-              </div>
-              <img class="folder" src="{% static '/images/folder.svg' %}" alt="">
-            </div>
-          </a>
-          <a href="/"><img class="logo" src="{% static 'images/fahis_logo.jpg' %}" alt="Fahis"></a>
+  <nav class="header">
+    <div class="left-side">
+      <a href="#">
+        <div class=" language-en">
+          <img class="language-pic" src="{% static '/images/language.svg' %}" alt="">
+          <div class="en">English</div>
         </div>
-      </nav>
+      </a>
+      <a href="/login">
+        <div class="login">تسجيل الدخول</div>
+    </div></a>
+    <div class="right-side">
+      <a href="/history">
+        <div class="history">
+          <div class="history-text">
+            الفحوصات السابقة
+          </div>
+          <img class="folder" src="{% static '/images/folder.svg' %}" alt="">
+        </div>
+      </a>
+      <a href="/"><img class="logo" src="{% static 'images/fahis_logo.jpg' %}" alt="Fahis"></a>
+    </div>
+  </nav>
 
     <div class="login-box forgot-box">
         <h1>طلب كلمة مرور جديدة</h1>
