@@ -11,7 +11,11 @@ from .apiFunc import *
 
 def report(request,reportID):
 	#report=getreport(reportID)
-	context={"task_id":reportID}
+	sample = Sample.objects.filter(ReportID=reportID)[0]
+	score = float(Report.objects.get(Report_ID=reportID).Others)
+	if score>10:
+		score=10
+	context={"task_id":reportID, "sample":sample, "score": score*10}
 	return render(request,'frontend/result.html',context)
 
 def home(request):
@@ -23,19 +27,15 @@ def home(request):
 		return render(request, 'frontend/index.html', {},)
 
 
-def register(request):
-	return render(request,'frontend/register.html')
 
 def history(request):
-	return render(request,'frontend/history.html')
+	sample_list = Sample.objects.filter(Privacy_Type="public")
+	allReports = Report.objects.all()
+	return render(request,'frontend/history.html', {'sample_list': sample_list,'allReports':allReports})
 
 def forgot(request):
 	return render(request,'frontend/forgot.html')
 
-
-def dbList(rquest):
-	sample_list = Sample.objects.all()
-	return render(rquest, 'mainapp/dbList.html', {'sample_list': sample_list})
 
 # Add your code to error checking for r.status_code.
 

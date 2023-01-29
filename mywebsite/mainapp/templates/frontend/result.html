@@ -46,7 +46,7 @@
           <div class="row-container">
             <h3 class="boldh3">SHA256</h3>
             <div class="hash">
-              <h3 class="row-text"> adcec5cde869fa0240860f33c011dce74295a50e901cb18c38515083f835de60
+              <h3 class="row-text"> {{sample.Sample_Address}}
               </h3>
             </div>
           </div>
@@ -63,7 +63,8 @@
         <h1>النتيجة {{task_id}}</h1>
         <div class="result">
           <div class="circular-progress">
-            <span class="progress-value">0%</span>
+            <span class="progress-value" value>0%</span>
+            <p class="progress-end">{{score}}</p>
           </div>
           <div class="result-decision">
             آمن
@@ -93,7 +94,7 @@
               التاريخ والوقت
             </span>
             <br>
-            14/1/2023 10:55
+            {{sample.Create_Date}}
           </h3>
           <img class="bottom-icons" src="{% static 'images/calendar.svg' %}" alt="">
         </div>

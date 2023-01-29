@@ -38,6 +38,7 @@
     </div>
   </nav>
 
+  
   <div class="history-container">
     <div class="history-top">
       <div class="general-history">
@@ -68,37 +69,31 @@
           </tr>
         </thead>
         <tbody>
+          {% for sample in sample_list %}
           <tr>
-            <td><a href="result.html">
+            <td><a href="/report/{{sample.ReportID}}">
               اضغط هنا 
               </a>
               </td>
             <td>
-              <div class="table-result">آمن</div>
+              <div class="table-result">  آمن</div>
             </td>
-            <td>اكتوبر 30, 2023</td>
+            <td>{{sample.Create_Date}}</td>
             <td>ويندوز 7</td>
             <td>ملف</td>
-            <td>file name goes here.exe</td>
+            <td>{{sample.Sample_Address}}</td>
           </tr>
-          <tr>
-            <td><a href="result.html">
-              اضغط هنا 
-              </a>
-              </td>
-            <td>
-              <div class="table-result">آمن</div>
-            </td>
-            <td>اكتوبر 30, 2023</td>
-            <td>ويندوز 7</td>
-            <td>ملف</td>
-            <td>file name goes here.exe</td>
+          {% endfor %}
+          
          
         </tbody>
       </table>
+      <button id="left" >&lt</button>
+      <span id="page_number">1</span>
+      <button id="right" >&gt</button>
     </div>
   </div>
-  <script src="{% static 'js/history.js' %}" type="text/javascript"></script>
+  <script type="text/javascript" src="{% static 'js/history2.js' %}" ></script>
 </body>
 
 </html>
