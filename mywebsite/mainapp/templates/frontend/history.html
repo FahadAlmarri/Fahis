@@ -1,5 +1,6 @@
 <html>
-  {% load static %}
+{% load static %}
+
 <head>
   <title>History</title>
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
@@ -15,12 +16,12 @@
           <div class="en">English</div>
         </div>
       </a>
-     {% if user.is_authenticated %}
+      {% if user.is_authenticated %}
       <a href="{% url 'logout' %}">
         <div class="login">تسجيل الخروج</div>
       </a>
       {% else %}
-      <a href="{% url 'login' %}">
+      <a id="history-anchor" href="{% url 'login' %}">
         <div class="login">تسجيل الدخول</div>
       </a>
       {% endif %}
@@ -38,15 +39,18 @@
     </div>
   </nav>
 
-  
+
   <div class="history-container">
     <div class="history-top">
       <div class="general-history">
         فحوصات عامة
       </div>
       <div class="your-history">
-        فحوصاتك
+       
+          فحوصاتك
+       
       </div>
+
     </div>
     <div class="history-bottom-box">
       <div class="search-container">
@@ -68,15 +72,15 @@
             <td>الهدف</td>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="public-history">
           {% for sample in sample_list %}
           <tr>
             <td><a href="/report/{{sample.ReportID}}">
-              اضغط هنا 
+                اضغط هنا
               </a>
-              </td>
+            </td>
             <td>
-              <div class="table-result">  آمن</div>
+              <div class="table-result"> آمن</div>
             </td>
             <td>{{sample.Create_Date}}</td>
             <td>ويندوز 7</td>
@@ -84,16 +88,36 @@
             <td>{{sample.Sample_Address}}</td>
           </tr>
           {% endfor %}
-          
-         
+
+
+        </tbody>
+        <tbody class="private-history">
+          {% for sample in sample_list %}
+          <tr>
+            <td><a href="/report/{{sample.ReportID}}">
+                اضغط هنا
+              </a>
+            </td>
+            <td>
+              <div class="table-result"> آمن</div>
+            </td>
+            <td>{{sample.Create_Date}}</td>
+            <td>ويندوز 7</td>
+            <td>ملف</td>
+            <td>{{sample.Sample_Address}}</td>
+          </tr>
+          {% endfor %}
+
+
         </tbody>
       </table>
-      <button id="left" >&lt</button>
+      <button id="left">&lt</button>
       <span id="page_number">1</span>
-      <button id="right" >&gt</button>
+      <button id="right">&gt</button>
     </div>
   </div>
-  <script type="text/javascript" src="{% static 'js/history2.js' %}" ></script>
+
+  <script type="text/javascript" src="{% static 'js/history.js' %}"></script>
 </body>
 
 </html>

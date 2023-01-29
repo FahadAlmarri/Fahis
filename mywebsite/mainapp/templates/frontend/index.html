@@ -40,102 +40,103 @@
     </div>
   </nav>
 
-              {% if messages %}
-                {% for message in messages %}
-                    <br><br>
-                    {{ message }}
-                {% endfor %}
-            {% endif %}
+  {% if messages %}
+  {% for message in messages %}
+  <br><br>
+  {{ message }}
+  {% endfor %}
+  {% endif %}
 
-    <div class="main-box">
-      <div class="top-buttons">
+  <div class="main-box">
+    <div class="top-buttons">
 
-        <div class="url-button" onclick="clicked('url-button')" onmouseover="purple('url-button')"
-          onmouseout="black('url-button')">رابط</div>
-        <div class="file-button" onclick="clicked('file-button')" onmouseover="purple('file-button')"
-          onmouseout="black('file-button')">ملف</div>
-      </div>
+      <div class="url-button" onclick="clicked('url-button')" onmouseover="purple('url-button')"
+        onmouseout="black('url-button')">رابط</div>
+      <div class="file-button" onclick="clicked('file-button')" onmouseover="purple('file-button')"
+        onmouseout="black('file-button')">ملف</div>
+    </div>
 
-      <div class="bottom-box">
-        <div class="drag-box">
-          <div id="drag-content">
-            <img class="cloud-img" src="{% static 'images/cloud-upload.png' %}" alt="Upload">
-            <h3>
-              اسحب الملف هنا
-              <br>أو تصفح ملفاتك لرفع الملف المراد
-              <span id="spn">هنا</span>
-            </h3>
-          </div>
-          <h1 id="file-name" ></h1>
+    <div class="bottom-box">
+      <div class="drag-box">
+        <div id="drag-content">
+          <img class="cloud-img" src="{% static 'images/cloud-upload.png' %}" alt="Upload">
+          <h3>
+            اسحب الملف هنا
+            <br>أو تصفح ملفاتك لرفع الملف المراد
+            <span id="spn">هنا</span>
+          </h3>
         </div>
-        <div class="url-box">
-          <img class="cloud-img" src="{% static 'images/link.svg' %}" alt="Upload">
-          <div class="url-field">
-            <h3 class="text">
-              :الرجاء ادخال الرابط
-            </h3>
-            <input class="text-field" type="text" placeholder="                       الرجاء ادخال الرابط هنا">
-            </input>
-          </div>
+        <h1 id="file-name"></h1>
+      </div>
+      <div class="url-box">
+        <img class="cloud-img" src="{% static 'images/link.svg' %}" alt="Upload">
+        <div class="url-field">
+          <h3 class="text">
+            :الرجاء ادخال الرابط
+          </h3>
+          <input class="text-field" type="text" placeholder="                       الرجاء ادخال الرابط هنا">
+          </input>
         </div>
       </div>
     </div>
-   
-    <button class="main-button" id="next-button">التالي</button>
-  
+  </div>
+
+  <button class="main-button" id="next-button">التالي</button>
+
 
   <!--
     1- Login (DONE) /Register page (function eye hide show password)
     2- Report Details
     3- modal box (DONE)
     4- main page Button (DONE)
-    5- function history
+    5- function history (DONE)
     6- Table pages
     7- English
     8- Drag and Drop
+    9- function result
   -->
 
   <div class="modal " id="modal">
-    
+
     <div class="modal-header">
       <button id="close" class="close">&times;</button>
       <h2>خيارات التحليل</h2>
     </div>
     <div class="modal-body">
       <form style="width:100%;" method="post" enctype="multipart/form-data">
-      <div class="drop-container">
-        <h3 class="text">
-          :بيئة التحليل
-        </h3>
-        <select class="dropdown" placeholder="fdsddfds" name="catg">
-          <option value="Windows 7">
-            ويندوز
-            7
-          </option>
-          <option value="" disabled>ويندوز 10</option>
-          <option value="" disabled>ويندوز 11</option>
-          <option value="" disabled>لينكس 22.04</option>
+        <div class="drop-container">
+          <h3 class="text">
+            :بيئة التحليل
+          </h3>
+          <select class="dropdown" placeholder="fdsddfds" name="catg">
+            <option value="Windows 7">
+              ويندوز
+              7
+            </option>
+            <option value="" disabled>ويندوز 10</option>
+            <option value="" disabled>ويندوز 11</option>
+            <option value="" disabled>لينكس 22.04</option>
 
-        </select>
-      </div>
-      <div class="drop-container">
-        <h3 class="text">
-          :نوع التحليل
-        </h3>
-        <select class="dropdown" placeholder="fdsddfds" name="catg">
-          <option value="Windows 7">عام</option>
-          <option value="Windows 7">خاص</option>
+          </select>
+        </div>
+        <div class="drop-container">
+          <h3 class="text">
+            :نوع التحليل
+          </h3>
+          <select class="dropdown" placeholder="fdsddfds" name="catg">
+            <option value="Windows 7">عام</option>
+            <option value="Windows 7">خاص</option>
 
-        </select>
-      </div>
-      {% csrf_token %}
-      <input id="browse" type="file" name="file" hidden>
-      <button class="main-button" type="submit">التالي</button>
-    </form>
+          </select>
+        </div>
+        {% csrf_token %}
+        <input id="browse" type="file" name="file" hidden>
+        <button class="main-button" type="submit">التالي</button>
+      </form>
     </div>
-  
+
   </div>
-  
+
   <div class="overlay" id="overlay"></div>
 
   <script type="text/javascript" src="{% static 'js/modal.js' %}"></script>
