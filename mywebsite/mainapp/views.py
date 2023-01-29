@@ -4,6 +4,7 @@ import pickle
 from django.urls import reverse
 from .apiFunc import *
 
+
 # Create your views here.
 
 
@@ -21,8 +22,6 @@ def home(request):
 			return redirect(f"report/{reportID}")
 		return render(request, 'frontend/index.html', {},)
 
-def login(request):
-	return render(request,'frontend/login.html')
 
 def register(request):
 	return render(request,'frontend/register.html')

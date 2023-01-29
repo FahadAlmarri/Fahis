@@ -13,6 +13,7 @@ class Report(models.Model):
 
 class FahisUser(models.Model):
 	User_ID = models.IntegerField('User ID')
+	Username= models.CharField('Username', max_length=120)
 	fname = models.CharField('First Name', max_length=120)
 	lname = models.CharField('Last name', max_length=120)
 	User_Email = models.EmailField('User Email')

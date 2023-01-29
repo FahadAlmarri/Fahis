@@ -17,9 +17,16 @@
           <div class="en">English</div>
         </div>
       </a>
-      <a href="/login">
+      {% if user.is_authenticated %}
+      <a href="{% url 'logout' %}">
+        <div class="login">تسجيل الخروج</div>
+      </a>
+      {% else %}
+      <a href="{% url 'login' %}">
         <div class="login">تسجيل الدخول</div>
-    </div></a>
+      </a>
+      {% endif %}
+    </div>
     <div class="right-side">
       <a href="/history">
         <div class="history">
@@ -32,6 +39,13 @@
       <a href="/"><img class="logo" src="{% static 'images/fahis_logo.jpg' %}" alt="Fahis"></a>
     </div>
   </nav>
+
+              {% if messages %}
+                {% for message in messages %}
+                    <br><br>
+                    {{ message }}
+                {% endfor %}
+            {% endif %}
 
 
     <div class="main-box">
