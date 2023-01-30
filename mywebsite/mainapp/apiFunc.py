@@ -4,11 +4,14 @@ import pickle
 from apscheduler.schedulers.background import BackgroundScheduler
 from django.urls import reverse
 from .models import *
-import random
+
+ 
 file_dic=pickle.load(open('file_dic.json',mode='rb'))
 
 task_queue=[]
-
+#we cant check use authenticated unless we move to view so we can use request variable
+#we add report create object also pu a check if user auth we add user to sample
+#we after we need try multiple accounts at the same time
 def uploadfile(uploaded_file):
     temp = uploaded_file
     hashed_temp = hash(temp)
@@ -23,6 +26,7 @@ def uploadfile(uploaded_file):
         reportID=file_dic[hashed_temp]
     Sample.objects.create(ReportID = reportID, Privacy_Type ='public', Create_Date ='2022-12-27 12:21:46', Sample_Type ='file', UserID =1, Sample_Address = hashed_temp)
     return reportID
+
 def getreport():
     
     if len(task_queue) ==0:

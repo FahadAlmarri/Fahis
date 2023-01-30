@@ -31,11 +31,11 @@ def home(request):
 def history(request):
 	sample_list = Sample.objects.filter(Privacy_Type="public")
 	allReports = Report.objects.all()
-	return render(request,'frontend/history.html', {'sample_list': sample_list,'allReports':allReports,})
+	return render(request,'frontend/history.html', {'sample_list': sample_list,'allReports':allReports})
 
 def forgot(request):
 	return render(request,'frontend/forgot.html')
-	
+
 
 # Add your code to error checking for r.status_code.
 
