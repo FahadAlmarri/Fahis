@@ -4,7 +4,7 @@
 <head>
   <title>History</title>
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -52,14 +52,17 @@
       </div>
 
     </div>
+    <form method="post">
     <div class="history-bottom-box">
       <div class="search-container">
-        <button class="search-button">
+        <button id="search-button" type="submit"  class="search-button">
           <img class="search-icon" src="{% static 'images/search.svg' %}" alt="">
         </button>
-        <input class="search-field" type="text" placeholder="
+        {% csrf_token %}
+        <input id="hash-search" name="hash" class="search-field" type="text" placeholder="
                 البحث
                 "></input>
+      </form>
       </div>
       <table>
         <thead>
@@ -85,7 +88,7 @@
             <td>{{sample.Create_Date}}</td>
             <td>ويندوز 7</td>
             <td>ملف</td>
-            <td>{{sample.Sample_Address}}</td>
+            <td id="{{sample.Sample_Address}}">{{sample.Sample_Address}}</td>
           </tr>
           {% endfor %}
 
@@ -111,9 +114,6 @@
 
         </tbody>
       </table>
-      <button id="left">&lt</button>
-      <span id="page_number">1</span>
-      <button id="right">&gt</button>
     </div>
   </div>
 

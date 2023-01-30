@@ -28,10 +28,20 @@ def home(request):
 
 
 
-def history(request):
-	sample_list = Sample.objects.filter(Privacy_Type="public")
-	allReports = Report.objects.all()
-	return render(request,'frontend/history.html', {'sample_list': sample_list,'allReports':allReports})
+def history(request): 
+	hash = request.POST.get("hash")
+	print(hash)
+	if(hash!=None and hash!=""):
+		print(hash)
+		sample_list = Sample.objects.filter(Privacy_Type="public", Sample_Address=hash)
+		allReports = Report.objects.all()
+		print(sample_list)
+		return render(request,'frontend/history.html', {'sample_list': sample_list,'allReports':allReports})
+	else:
+		sample_list = Sample.objects.filter(Privacy_Type="public")
+		print(sample_list)
+		allReports = Report.objects.all()
+		return render(request,'frontend/history.html', {'sample_list': sample_list,'allReports':allReports})
 
 def forgot(request):
 	return render(request,'frontend/forgot.html')
