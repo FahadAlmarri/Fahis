@@ -4,7 +4,7 @@ import pickle
 from apscheduler.schedulers.background import BackgroundScheduler
 from django.urls import reverse
 from .models import *
-
+import time
  
 file_dic=pickle.load(open('file_dic.json',mode='rb'))
 
@@ -20,12 +20,17 @@ def uploadfile(uploaded_file):
         reportID=file_api(temp)
         print(reportID)
         file_dic[hashed_temp]=reportID
-        Report.objects.create(Report_ID = reportID)
+        Report.objects.create(Report_ID = reportID,Report_Address=hashed_temp,Report_Type="file")
         pickle.dump(file_dic,open('file_dic.json',mode='wb'))
     else:
         reportID=file_dic[hashed_temp]
-    Sample.objects.create(ReportID = reportID, Privacy_Type ='public', Create_Date ='2022-12-27 12:21:46', Sample_Type ='file', UserID =1, Sample_Address = hashed_temp)
-    return reportID
+    foreignReport=Report.objects.get(Report_ID = reportID)
+
+    Sample.objects.create(ReportID = foreignReport, Privacy_Type ='public', Create_Date ='2022-12-27 12:21:46', Sample_Type ='file', Sample_Address = hashed_temp)
+
+    last_added_sample=Sample.objects.filter(ReportID=foreignReport).latest("id")
+    print(last_added_sample)
+    return last_added_sample.id
 
 def getreport():
     
@@ -37,10 +42,16 @@ def getreport():
         REST_URL = f"http://localhost:8900/tasks/report/{task_queue[0]}"
         HEADERS = {"Authorization": "Bearer 4THnM7z6a1T3NcqP8KHUGg"}
         r = requests.get(REST_URL, headers=HEADERS )
-        score = r.json()["info"]["score"]
+        score = float(r.json()["info"]["score"])*10
+        processes = r.json()['behavior']['processes']
+        network = r.json()['network']['domains']
+        duration=r.json()['info']['duration']
+        processes_json=[]
+        for process in processes:
+            processes_json.append({'process id':process['pid'],"process name":process['process_name'],'command_line':process['command_line']})
         print(score)
-        score_as_string=str(score)
-        Report.objects.filter(Report_ID = task_queue[0]).update(Others=score_as_string)
+        
+        Report.objects.filter(Report_ID = task_queue[0]).update(Network=network,Processes=processes_json,Duration=duration,Score=score)
         
         
         task_queue.pop(0)

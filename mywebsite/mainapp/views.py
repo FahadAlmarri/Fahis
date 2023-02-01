@@ -9,21 +9,22 @@ from .apiFunc import *
 
 
 
-def report(request,reportID):
+def report(request,sampleID):
 	#report=getreport(reportID)
-	sample = Sample.objects.filter(ReportID=reportID)[0]
-	score = float(Report.objects.get(Report_ID=reportID).Others)
-	if score>10:
-		score=10
-	context={"task_id":reportID, "sample":sample, "score": score*10}
+	
+	sample = Sample.objects.get(id=sampleID)
+	
+	report=Report.objects.get(Report_ID=sample.ReportID)
+	
+	context={"sample":sample, "report":report}
 	return render(request,'frontend/result.html',context)
 
 def home(request):
 		if(request.method=='POST'):
 			uploaded_file=request.FILES['file']
-			reportID=uploadfile(uploaded_file)	
+			sampleID=uploadfile(uploaded_file)	
 			#redirct to report
-			return redirect(f"report/{reportID}")
+			return redirect(f"report/{sampleID}")
 		return render(request, 'frontend/index.html', {},)
 
 

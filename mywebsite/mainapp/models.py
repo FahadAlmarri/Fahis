@@ -3,10 +3,13 @@ from django.contrib.auth.models import User
 
 class Report(models.Model):
 	Report_ID = models.IntegerField('Report ID', unique=True)
-	Behavior = models.CharField('Behavior', max_length=120)
-	Signature = models.CharField('Signature', max_length=120)
-	Metadata = models.CharField('Metadata', max_length=120)
-	Others = models.TextField(blank=True)
+	Score = models.IntegerField('Score',null=True)
+	Network = models.JSONField('Network',null=True)
+	Duration = models.IntegerField('Duration',null=True)
+	Processes = models.JSONField('Processes',null=True)
+	Report_Type = models.CharField("Report Type", max_length=5)
+	Report_Address = models.TextField("Report Address")
+	
 
 	def __int__(self):
 		return self.Report_ID
@@ -23,7 +26,8 @@ class Report(models.Model):
 # 		return self.fname + ' ' + self.lname
 
 class Sample(models.Model):
-	ReportID = models.ForeignKey(Report, null=True,on_delete=models.CASCADE)
+	id=models.BigAutoField("id",unique=True,primary_key=True,auto_created=True)
+	ReportID = models.ForeignKey(Report,to_field="Report_ID", null=True,on_delete=models.CASCADE)
 	Privacy_Type = models.CharField('Privacy Type', max_length=8)
 	Create_Date = models.DateTimeField('Creation Date')
 	Sample_Type = models.CharField("Sample Type", max_length=5)
