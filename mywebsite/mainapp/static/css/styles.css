@@ -125,6 +125,8 @@ a:hover{
     
 }
 
+
+
 @media(max-width: 660px ) {
     
     .left-side {
@@ -974,12 +976,15 @@ table tbody tr td:first-child {
 }
 
 .login-box a{
-    text-align: left;
+    float: left;
     text-decoration: none;
 }
 .login-box a:hover{
     opacity: .85;
+    background: none;
 }
+
+
 .login-box sup{
     color: red;
     font-size: 1rem ;
