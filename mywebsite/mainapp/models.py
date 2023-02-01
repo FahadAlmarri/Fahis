@@ -33,5 +33,6 @@ class Sample(models.Model):
 	Sample_Type = models.CharField("Sample Type", max_length=5)
 	UserID = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
 	Sample_Address = models.TextField("Sample Address", null=True)
+	Sample_name=models.TextField("Sample_name",null=True)
 	def __int__(self):
 		return self.Sample_ID

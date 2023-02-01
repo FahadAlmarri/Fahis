@@ -2,7 +2,8 @@ from django.shortcuts import render, HttpResponseRedirect, redirect
 from .models import *
 import pickle
 from django.urls import reverse
-from .apiFunc import *
+from .apiFunc import uploadfile
+
 
 
 # Create your views here.
@@ -11,7 +12,6 @@ from .apiFunc import *
 
 def report(request,sampleID):
 	#report=getreport(reportID)
-	
 	sample = Sample.objects.get(id=sampleID)
 	
 	report=Report.objects.get(Report_ID=sample.ReportID)
@@ -21,34 +21,62 @@ def report(request,sampleID):
 
 def home(request):
 		if(request.method=='POST'):
-			uploaded_file=request.POST.get('file')
-			print(f"*******************************************uploaded file: {uploaded_file}")
-
+			privacy=request.POST.get('privacy')
+			if not (request.user.is_authenticated):
+				if privacy =="private":
+					return redirect('/members/login_user')
+			
 			uploaded_url=request.POST.get('url')
-			print(f"*****************************************uploaded url: {uploaded_url}")
+			if uploaded_url == None or uploaded_url=="":
+				uploaded_file=request.FILES['file']
+				sampleID=uploadfile(uploaded_file,privacy,request)
+			else:
+				url = 'https://www.virustotal.com/vtapi/v2/url/scan'
+
+
 			
 
-			sampleID=uploadfile(uploaded_file)	
+			
+			
+			
+
+				
 			#redirct to report
+			
 			return redirect(f"report/{sampleID}")
 		return render(request, 'frontend/index.html', {},)
-
 
 
 def history(request): 
 	hash = request.POST.get("hash")
 	print(hash)
-	if(hash!=None and hash!=""):
-		print(hash)
-		sample_list = Sample.objects.filter(Privacy_Type="public", Sample_Address=hash)
-		allReports = Report.objects.all()
-		print(sample_list)
-		return render(request,'frontend/history.html', {'sample_list': sample_list,'allReports':allReports})
+	if not (request.user.is_authenticated):
+		if(hash!=None and hash!=""):
+			print(hash)
+			sample_list = Sample.objects.filter(Privacy_Type="public", Sample_Address=hash)
+			allReports = Report.objects.all()
+			print(sample_list)
+			return render(request,'frontend/history.html', {'sample_list': sample_list,'allReports':allReports})
+		else:
+			sample_list = Sample.objects.filter(Privacy_Type="public")
+			print(sample_list)
+			allReports = Report.objects.all()
+			return render(request,'frontend/history.html', {'sample_list': sample_list,'allReports':allReports})
 	else:
-		sample_list = Sample.objects.filter(Privacy_Type="public")
-		print(sample_list)
-		allReports = Report.objects.all()
-		return render(request,'frontend/history.html', {'sample_list': sample_list,'allReports':allReports})
+		if(hash!=None and hash!=""):
+			print(hash)
+			sample_list = Sample.objects.filter(Privacy_Type="public", Sample_Address=hash)
+			allReports = Report.objects.all()
+			user_list = Sample.objects.filter(UserID_id=request.user,Sample_Address=hash)
+			print(sample_list)
+			return render(request,'frontend/history.html', {'sample_list': sample_list,'allReports':allReports,"user_list":user_list})
+		else:
+			sample_list = Sample.objects.filter(Privacy_Type="public")
+			print(sample_list)
+			allReports = Report.objects.all()
+			user_list = Sample.objects.filter(UserID_id=request.user)
+			return render(request,'frontend/history.html', {'sample_list': sample_list,'allReports':allReports,"user_list":user_list})
+	
 
 def forgot(request):
 	return render(request,'frontend/forgot.html')

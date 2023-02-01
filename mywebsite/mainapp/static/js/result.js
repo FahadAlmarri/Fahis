@@ -1,11 +1,12 @@
-
 let circularProgress = document.querySelector(".circular-progress"),
 progressValue = document.querySelector(".progress-value");
 
 let progressStartValue = 0,    
 progressEndValue = document.querySelector(".progress-end").textContent,    
 speed = 30;
-
+if(progressEndValue === "None"){
+    progressValue.innerHTML = "-"
+}else{
 let progress = setInterval(() => {
 
 
@@ -18,7 +19,7 @@ if(progressStartValue == progressEndValue){
 }    
 progressStartValue++;
 }, speed);
-
+}
 
 let root = document.documentElement;
 const decision = document.querySelector(".result-decision");
@@ -26,22 +27,25 @@ const decision = document.querySelector(".result-decision");
 console.log(progressEndValue);
 
 
-// progressEndValue = 40;
-result_ranges(50, 80);
+//progressEndValue = 20;
+result_ranges(15, 50);
 
 
-function result_ranges(red, green){
-    if (progressEndValue > green){ //green
-
-    }else if(progressEndValue > red){ //yellow
-        root.style.setProperty('--result-color', "rgb(173, 100, 5)");
-        decision.innerHTML = "مشتبه به";
-    }else{ // red
+function result_ranges(green, red){
+    if(progressEndValue === "None"){
+        root.style.setProperty('--result-color', "grey");
+        decision.innerHTML = ".."+"قيد الفحص";
+        return
+      }
+    if (progressEndValue > red){ //red
         root.style.setProperty('--result-color', "red");
         decision.innerHTML = "خطر";
-
+    }else if(progressEndValue > green){ //yellow
+        root.style.setProperty('--result-color', "rgb(173, 100, 5)");
+        decision.innerHTML = "مشتبه به";
+    }else{ // green
+        
     }
-
 }
 
 
@@ -83,4 +87,3 @@ networkButton.addEventListener('click',()=>{
         
     }
 });
-

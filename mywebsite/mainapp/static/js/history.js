@@ -1,22 +1,6 @@
 const history = document.getElementsByClassName("history")[0];
 history.style.borderBottom = "2px solid #712dc8";
 
-/* ---  paging -----*/
-var leftButton = document.getElementById("left");
-var rightButton = document.getElementById("right");
-console.log(1);
-leftButton.addEventListener("click", () => {
-  var pageNumber = document.getElementById("page_number");
-  if (pageNumber.textContent > 0) {
-    pageNumber.textContent--;
-  }
-  console.log(pageNumber.textContent);
-});
-rightButton.addEventListener("click", () => {
-  var pageNumber = document.getElementById("page_number");
-  pageNumber.textContent++;
-  console.log(pageNumber.textContent);
-});
 
 /* ----- switching (public, private) -----*/
 const generalButton = document.getElementsByClassName("general-history")[0];
@@ -105,3 +89,29 @@ privateButton.addEventListener('mouseout',()=>{
 
 
 
+/* ------------- history decision -----------------*/
+const tableDecisions = document.querySelectorAll('.table-result').forEach(function(element){
+  score = element.innerHTML;
+  console.log(score)
+  result_ranges(15, 50,element);
+});
+
+
+
+function result_ranges(green, red, element){
+  if(score === "None"){
+    element.style.background = "grey";
+    element.innerHTML = ".."+"قيد الفحص";
+    return
+  }
+  if (score > red){ //red
+      element.style.background = "red";
+      element.innerHTML = "خطر";
+  }else if(score > green){ //yellow
+      element.style.background = "rgb(173, 100, 5)";
+      element.innerHTML = "مشتبه به";
+  }else{ // green
+    element.style.background = "#00843D";
+    element.innerHTML = "آمن";
+  }
+}

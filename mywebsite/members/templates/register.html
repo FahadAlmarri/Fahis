@@ -30,7 +30,7 @@
           <a href="/history">
             <div class="history">
               <div class="history-text">
-                الفحوصات السابقة
+                الفحوصات 
               </div>
               <img class="folder" src="{% static '/images/folder.svg' %}" alt="">
             </div>
@@ -42,7 +42,7 @@
 
     <br>
     <div class="login-box register-box">
-        <div align="center" class="container">
+        <div align="right" class="container">
             <form action="{% url 'register' %}" method="POST">
                 {% csrf_token %}
 

@@ -940,14 +940,8 @@ table tbody tr td:first-child {
     transform: translateX(-50%);
   }
 
-  .public-history{
-    color: #00843D;
-  }
 
-  .private-history{
-    
-    color: blue;
-  }
+  
 /*----------- login -----------*/
 .login-box{
     width: 800px;

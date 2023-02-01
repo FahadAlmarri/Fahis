@@ -30,7 +30,7 @@
       <a href="/history">
         <div class="history">
           <div class="history-text">
-            الفحوصات السابقة
+            الفحوصات 
           </div>
           <img class="folder" src="{% static '/images/folder.svg' %}" alt="">
         </div>
@@ -73,7 +73,6 @@
             <td>بيئة التحليل</td>
             <td>نوع الطلب</td>
             <td>الهدف</td>
-            <td>fdsfd</td>
           </tr>
         </thead>
         <tbody class="public-history">
@@ -90,14 +89,14 @@
             <td>ويندوز 7</td>
             <td>ملف</td>
             <td>{{sample.Sample_Address}}</td>
-            <td>{{sample.ReportID.Score}}</td>
+           
           </tr>
           {% endfor %}
 
 
         </tbody>
         <tbody class="private-history">
-          {% for sample in sample_list %}
+          {% for sample in user_list %}
           <tr>
             <td><a href="/report/{{sample.id}}">
                 اضغط هنا
@@ -109,16 +108,13 @@
               <td>ويندوز 7</td>
               <td>ملف</td>
               <td>{{sample.Sample_Address}}</td>
-              <td>{{sample.ReportID.Score}}</td>
+             
           </tr>
           {% endfor %}
 
 
         </tbody>
       </table>
-      <button id="left">&lt</button>
-      <span id="page_number">1</span>
-      <button id="right">&gt</button>
     </div>
   </div>
 
