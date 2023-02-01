@@ -4,7 +4,8 @@
 <head>
   <title>Upload File</title>
   <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}  ">
-  <script src="static/js/upload_sample.js"></script>
+  
+  <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
 </head>
 
 <body>
@@ -61,12 +62,22 @@
         <div id="drag-content">
           <img class="cloud-img" src="{% static 'images/cloud-upload.png' %}" alt="Upload">
           <h3>
-            اسحب الملف هنا
+            <span id="drag-text">
+              اسحب الملف هنا
+            </span>
             <br>أو تصفح ملفاتك لرفع الملف المراد
             <span id="spn">هنا</span>
           </h3>
         </div>
-        <h1 id="file-name"></h1>
+      </div>
+      <div id="uploaded-file">
+        <div id="close-file">X</div>
+        <div>
+          <span id="file-name">file.json </span>
+          <br>
+          <span id="file-size">512MB</span>
+        </div>
+        <img id="attachment-icon" src="{% static 'images/attach.png' %}" alt="">
       </div>
       <div class="url-box">
         <img class="cloud-img" src="{% static 'images/link.svg' %}" alt="Upload">
@@ -85,15 +96,18 @@
 
 
   <!--
-    1- Login (DONE) /Register page (function eye hide show password)
-    2- Report Details
+    1- Login (DONE) /Register page (function eye hide show password) (DONE)
+    2- Report Details(DONE)
     3- modal box (DONE)
     4- main page Button (DONE)
     5- function history (DONE)
-    6- Table pages
-    7- English
-    8- Drag and Drop
-    9- function result
+    6- English
+    7- Drag and Drop(DONE)
+    8- function result(DONE) / history result
+    9- function upload file(DONE)
+    10- fix register page
+    11- adding messages
+
   -->
 
   <div class="modal " id="modal">
@@ -139,8 +153,10 @@
 
   <div class="overlay" id="overlay"></div>
 
+  <script src="static/js/upload_sample.js"></script>
   <script type="text/javascript" src="{% static 'js/modal.js' %}"></script>
-  <script type="text/javascript" src="{% static 'js/drag.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/browse.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/drag&drop.js' %}"></script>
 </body>
 
 </html>

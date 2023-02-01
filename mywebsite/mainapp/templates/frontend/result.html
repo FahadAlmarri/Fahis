@@ -1,5 +1,6 @@
 <html>
-  {% load static %}
+{% load static %}
+
 <head>
   <title>Result page</title>
   <link rel="stylesheet" href="{% static 'css/styles.css' %}  ">
@@ -76,6 +77,15 @@
       <h1>معلومات الارسال</h1>
       <div class="bottom-section">
         <div class="bottom-cell">
+          <h3 class="cell-text">
+            <span class="cell-span"> مدة الفحص
+            </span>
+            <br>
+            60 ثانية
+          </h3>
+          <img class="bottom-icons" src="{% static 'images/duration.svg' %}" alt="">
+        </div>
+        <div class="bottom-cell">
           <div>
             <h3 class="cell-text">
               <span class="cell-span">
@@ -109,6 +119,67 @@
         </div>
       </div>
     </div>
+  </div>
+  <h1>التحليل المتقدم</h1>
+  <div class="report-details">
+    <div class="report-details-nav">
+      <div class="network-button bt">الشبكة</div>
+      <div class="processes-button bt">نظرة عامة على العمليات</div>
+      <hr>
+    </div>
+    <table class="processes-table">
+      <thead>
+        <tr>
+          <td>سطر الأمر</td>
+          <td>اسم العملية</td>
+          <td>معرف العملية</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>"C:\Users\ATVeyDl98Z\Desktop\b977a85eeb03aa43fa26dcb782eaffe814d57a35564121f9958849b128300e8b.exegfgfggfgfggfgfgghhghghhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"</td>
+          <td>lsass.exe</td>
+          <td>420</td>
+        </tr>
+        <tr>
+          <td>"C:\Users\ATVeyDl98Z\Desktop\b977a85eeb03aa43fa26dcb782eaffe814d57a35564121f9958849b128300e8b.exegfgfggfgfggfgfgghhghghhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"</td>
+          <td>lsass.exe</td>
+          <td>420</td>
+        </tr>
+        <tr>
+          <td>"C:\Users\ATVeyDl98Z\Desktop\b977a85eeb03aa43fa26dcb782eaffe814d57a35564121f9958849b128300e8b.exegfgfggfgfggfgfgghhghghhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"</td>
+          <td>lsass.exe</td>
+          <td>420</td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="network-table">
+      <thead>
+        <tr>
+          <td> عنوان بروتوكول الإنترنت</td>
+          <td> اسم المضيف</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>172.217.19.3</td>
+          <td>prod.ingestion-edge.prod.dataops.mozgcp.net</td>
+        </tr>
+        <tr>
+          <td>172.217.19.3</td>
+          <td>prod.ingestion-edge.prod.dataops.mozgcp.net</td>
+        </tr>
+        <tr>
+          <td>172.217.19.3</td>
+          <td>prod.ingestion-edge.prod.dataops.mozgcp.net</td>
+        </tr>
+        <tr>
+          <td>172.217.19.3</td>
+          <td>prod.ingestion-edge.prod.dataops.mozgcp.net</td>
+        </tr>
+      </tbody>
+    </table>
+    
   </div>
   <script src="{% static 'js/result.js' %}"></script>
 </body>

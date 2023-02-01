@@ -1,4 +1,5 @@
 function clicked(button) {
+  closeFile.click();
   var url = document.getElementsByClassName("url-button")[0];
   var file = document.getElementsByClassName("file-button")[0];
 
@@ -10,6 +11,7 @@ function clicked(button) {
     url.style.cursor = "default";
     url.style.color = "black";
     file.style.cursor = "pointer";
+    
   }
 
   if (file.style.background != "white" && button === "file-button") {

@@ -2,8 +2,13 @@
     font-family: arabicFont;
     src: url(GE_Dinar_One_Medium.ttf);
   }
-  
-  
+
+
+
+
+:root{
+    --result-color: #00843D;
+}
 
 body{
     background-color:#EDF1F3;
@@ -209,6 +214,47 @@ a:hover{
 
 .drag-box:hover{
     border-color: #712dc8;
+}
+#drag-text{
+    color: black;
+}
+#uploaded-file{
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    color: black;
+    font-family: sans-serif;
+    font-weight: normal;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 1rem;
+    border-radius: 8px;
+    transition: 400ms;
+}
+#uploaded-file:hover{
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+#file-name{
+    color: black;
+    font-size: 1.25rem;
+}
+
+#file-size{
+    color:rgba(0, 0, 0, 0.5);
+    font-size: 0.9rem;
+    
+}
+
+#attachment-icon{
+    height: 28;
+    filter: invert(17%) sepia(97%) saturate(3030%) hue-rotate(262deg) brightness(90%) contrast(92%);
+    
+}
+#close-file{
+    color: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    padding: 2px;
 }
 
 .url-box{
@@ -525,13 +571,11 @@ h1{
     min-height: 173;
     border-radius: 8px;
     display: flex;
-    align-items: center;
-    justify-content:right;
+    justify-content:flex-end;
     flex-wrap: wrap;
 }
 
 .bottom-cell{
-    
     min-width: 180px;
     display: flex;
     align-items: center;
@@ -565,6 +609,122 @@ h1{
     
 }
 
+
+.report-details{
+    background-color: white;
+    display: block;
+    height: 500px;
+    width: 94%;
+    margin: 0 auto;
+    border-radius: 8px;
+    box-sizing: border-box;
+    padding: 1rem;
+    overflow: auto;
+   
+}
+
+.report-details-nav{
+    display: flex;
+    justify-content: flex-end;
+    width: 90%;
+    position: relative;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+    
+}
+hr{
+    width: 100%;
+    margin:0 auto;
+    position: absolute;
+    bottom: 0;
+  
+}
+.bt{
+    padding: 0.8rem;
+    margin-left: 3rem;
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 5;
+  
+}
+.bt:hover{
+    color: #712dc8;
+}
+
+.processes-button{
+    border-bottom: 2px solid #712DC8;
+    color: #712DC8;
+}
+
+.network-button{
+
+}
+
+.processes-table{
+    width: 90%;
+    margin: 0 auto;
+}
+.processes-table tbody{
+  
+}
+.processes-table tbody tr{
+    font-family: sans-serif;
+    padding: 0;
+    margin: 0;
+    height: fit-content;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+   
+}
+.processes-table tbody tr:nth-child(odd) td{
+    background-color: rgb(249, 249, 249);
+}
+.processes-table tbody tr td{
+    font-size: 1rem;
+    background-color: white;
+    
+    
+}
+
+
+.processes-table tbody tr td:first-child{
+    max-width: 500px;
+    min-width: 500px;
+    word-wrap: break-word;
+} 
+
+
+.network-table{
+
+    max-width: 80%;
+    width: 800px;
+    margin: 0 auto;
+}
+
+.network-table tbody tr{
+    font-family: sans-serif;
+    padding: 0;
+    margin: 0;
+    height: fit-content;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+   
+}
+.network-table tbody tr:nth-child(odd) td{
+    background-color: rgb(249, 249, 249);
+}
+.network-table tbody tr td{
+    font-size: 1rem;
+    background-color: white;
+    
+    
+  
+}
+.network-table tbody tr td:nth-child(2){
+    max-width: 200px;
+    min-width: 200px;
+    word-wrap: break-word;
+}
+
+
 /* ----- Score progress ----- */
 
 
@@ -576,7 +736,7 @@ h1{
     
     aspect-ratio: 1;
     border-radius: 50%;
-    background: conic-gradient(#00843D 3.6deg, #ededed 0deg);
+    background: conic-gradient(var(--result-color) 3.6deg, #ededed 0deg);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -595,12 +755,12 @@ h1{
     font-family: poppins;
     font-weight: bold;
     font-size: 3.5vmax;
-    color: #00843D;
+    color: var(--result-color);
 }
 
 .result-decision{
-    background-color: #00843D;
-    width: 33%;
+    background-color: var(--result-color);
+    width: 40%;
     height: 38px;
     border-radius: 8px;
     display: flex;
