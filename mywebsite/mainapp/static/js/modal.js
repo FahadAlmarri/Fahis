@@ -24,6 +24,11 @@ function openModal(modal){
     if(modal == null) return
     modal.classList.add('active');
     overlay.classList.add('active');
+    console.log('open')
+    const url = document.getElementById("url")
+    const textField = document.querySelector(".text-field");
+    url.value = textField.value;
+    console.log(url.value)
   }
   function closeModal(modal){
     if(modal == null) return
