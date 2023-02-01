@@ -12,8 +12,7 @@ task_queue=[]
 #we cant check use authenticated unless we move to view so we can use request variable
 #we add report create object also pu a check if user auth we add user to sample
 #we after we need try multiple accounts at the same time
-def uploadfile(uploaded_file):
-    temp = uploaded_file
+def uploadfile(temp):
     hashed_temp = hash(temp)
     print(hashed_temp)
     if(checkDublicateFiles(hashed_temp)==False):
@@ -48,7 +47,7 @@ def getreport():
         duration=r.json()['info']['duration']
         processes_json=[]
         for process in processes:
-            processes_json.append({'process id':process['pid'],"process name":process['process_name'],'command_line':process['command_line']})
+            processes_json.append({'pid':process['pid'],"process_name":process['process_name'],'command_line':process['command_line']})
         print(score)
         
         Report.objects.filter(Report_ID = task_queue[0]).update(Network=network,Processes=processes_json,Duration=duration,Score=score)
@@ -83,7 +82,7 @@ def file_api(file):
     REST_URL = "http://localhost:8900/tasks/create/file"
     HEADERS = {"Authorization": "Bearer 4THnM7z6a1T3NcqP8KHUGg"}
     sample=file.open(mode="rb")
-    files = {"file": ("sample", sample)}
+    files = {"file": (file, sample)}
     r = requests.post(REST_URL, headers=HEADERS, files=files,timeout=10)
     taskID=r.json()['task_id']
     task_queue.append(taskID)

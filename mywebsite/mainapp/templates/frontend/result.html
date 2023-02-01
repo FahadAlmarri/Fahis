@@ -65,7 +65,7 @@
         <div class="result">
           <div class="circular-progress">
             <span class="progress-value" value>0%</span>
-            <p class="progress-end">{{score}}</p>
+            <p class="progress-end">{{report.Score}}</p>
           </div>
           <div class="result-decision">
             آمن
@@ -81,7 +81,7 @@
             <span class="cell-span"> مدة الفحص
             </span>
             <br>
-            60 ثانية
+             {{report.Duration}} ثانية
           </h3>
           <img class="bottom-icons" src="{% static 'images/duration.svg' %}" alt="">
         </div>
@@ -136,21 +136,13 @@
         </tr>
       </thead>
       <tbody>
+        {%for process in report.Processes%}
         <tr>
-          <td>"C:\Users\ATVeyDl98Z\Desktop\b977a85eeb03aa43fa26dcb782eaffe814d57a35564121f9958849b128300e8b.exegfgfggfgfggfgfgghhghghhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"</td>
-          <td>lsass.exe</td>
-          <td>420</td>
+          <td>{{process.command_line}}</td>
+          <td>{{process.process_name}}</td>
+          <td>{{process.pid}}</td>
         </tr>
-        <tr>
-          <td>"C:\Users\ATVeyDl98Z\Desktop\b977a85eeb03aa43fa26dcb782eaffe814d57a35564121f9958849b128300e8b.exegfgfggfgfggfgfgghhghghhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"</td>
-          <td>lsass.exe</td>
-          <td>420</td>
-        </tr>
-        <tr>
-          <td>"C:\Users\ATVeyDl98Z\Desktop\b977a85eeb03aa43fa26dcb782eaffe814d57a35564121f9958849b128300e8b.exegfgfggfgfggfgfgghhghghhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"</td>
-          <td>lsass.exe</td>
-          <td>420</td>
-        </tr>
+        {%endfor%}
       </tbody>
     </table>
     <table class="network-table">
@@ -161,22 +153,12 @@
         </tr>
       </thead>
       <tbody>
+        {%for network in report.Network%}
         <tr>
-          <td>172.217.19.3</td>
-          <td>prod.ingestion-edge.prod.dataops.mozgcp.net</td>
+          <td>{{network.ip}}</td>
+          <td>{{network.domain}}</td>
         </tr>
-        <tr>
-          <td>172.217.19.3</td>
-          <td>prod.ingestion-edge.prod.dataops.mozgcp.net</td>
-        </tr>
-        <tr>
-          <td>172.217.19.3</td>
-          <td>prod.ingestion-edge.prod.dataops.mozgcp.net</td>
-        </tr>
-        <tr>
-          <td>172.217.19.3</td>
-          <td>prod.ingestion-edge.prod.dataops.mozgcp.net</td>
-        </tr>
+        {%endfor%}
       </tbody>
     </table>
     

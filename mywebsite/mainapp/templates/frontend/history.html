@@ -52,14 +52,17 @@
       </div>
 
     </div>
+    <form method="post">
     <div class="history-bottom-box">
       <div class="search-container">
-        <button class="search-button">
+        <button type="submit" class="search-button">
           <img class="search-icon" src="{% static 'images/search.svg' %}" alt="">
         </button>
-        <input class="search-field" type="text" placeholder="
+        {% csrf_token %}
+        <input name="hash" class="search-field" type="text" placeholder="
                 البحث
                 "></input>
+        </form>
       </div>
       <table>
         <thead>
@@ -76,18 +79,18 @@
         <tbody class="public-history">
           {% for sample in sample_list %}
           <tr>
-            <td><a href="/report/{{sample.ReportID}}">
+            <td><a href="/report/{{sample.id}}">
                 اضغط هنا
               </a>
             </td>
             <td>
-              <div class="table-result"> آمن</div>
+              <div class="table-result">{{sample.ReportID.Score}}</div>
             </td>
             <td>{{sample.Create_Date}}</td>
             <td>ويندوز 7</td>
             <td>ملف</td>
             <td>{{sample.Sample_Address}}</td>
-            <td>{{sample}}score</td>
+            <td>{{sample.ReportID.Score}}</td>
           </tr>
           {% endfor %}
 
@@ -96,17 +99,17 @@
         <tbody class="private-history">
           {% for sample in sample_list %}
           <tr>
-            <td><a href="/report/{{sample.ReportID}}">
+            <td><a href="/report/{{sample.id}}">
                 اضغط هنا
               </a>
-            </td>
-            <td>
-              <div class="table-result"> آمن</div>
-            </td>
-            <td>{{sample.Create_Date}}</td>
-            <td>ويندوز 7</td>
-            <td>ملف</td>
-            <td>{{sample.Sample_Address}}</td>
+              <td>
+                <div class="table-result">{{sample.ReportID.Score}}</div>
+              </td>
+              <td>{{sample.Create_Date}}</td>
+              <td>ويندوز 7</td>
+              <td>ملف</td>
+              <td>{{sample.Sample_Address}}</td>
+              <td>{{sample.ReportID.Score}}</td>
           </tr>
           {% endfor %}
 

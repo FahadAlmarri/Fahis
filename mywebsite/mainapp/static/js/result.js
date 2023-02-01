@@ -26,7 +26,7 @@ const decision = document.querySelector(".result-decision");
 console.log(progressEndValue);
 
 
-progressEndValue = 40;
+// progressEndValue = 40;
 result_ranges(50, 80);
 
 

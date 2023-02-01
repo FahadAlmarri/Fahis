@@ -1,9 +1,11 @@
+var x = document.querySelector(".text-field")
 function clicked(button) {
-  closeFile.click();
+  
   var url = document.getElementsByClassName("url-button")[0];
   var file = document.getElementsByClassName("file-button")[0];
-
+  
   if (url.style.background != "white" && button === "url-button") {
+    closeFile.click();
     url.style.background = "white";
     file.style.background = "#E5E8EB";
     document.getElementsByClassName("drag-box")[0].style.display = "none";
@@ -15,6 +17,7 @@ function clicked(button) {
   }
 
   if (file.style.background != "white" && button === "file-button") {
+    x.value=""
     file.style.background = "white";
     url.style.background = "#E5E8EB";
     document.getElementsByClassName("drag-box")[0].style.display = "flex";

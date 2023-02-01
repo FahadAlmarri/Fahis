@@ -21,7 +21,10 @@ def report(request,sampleID):
 
 def home(request):
 		if(request.method=='POST'):
+			uploaded_url=request.FILES['url']
+			print(uploaded_url)
 			uploaded_file=request.FILES['file']
+			print(uploaded_file)
 			sampleID=uploadfile(uploaded_file)	
 			#redirct to report
 			return redirect(f"report/{sampleID}")
