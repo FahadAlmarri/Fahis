@@ -54,14 +54,17 @@ def uploadfile(temp,privacy,request):
     print(hashed_temp)
     current_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     if(checkDublicateFiles(hashed_temp)==False):
-        reportID=file_api(temp)
-        print(reportID)
-        file_dic[hashed_temp]=reportID
-        Report.objects.create(Report_ID = reportID,Report_Address=hashed_temp,Report_Type="file")
+        Report.objects.create(Report_Address=hashed_temp,Report_Type="file")
+        foreignReport=Report.objects.get(Report_Address=hashed_temp)
+
+        file_api(temp,foreignReport.Report_ID)
+        print(foreignReport.Report_ID)
+        file_dic[hashed_temp]=foreignReport.Report_ID
         pickle.dump(file_dic,open('file_dic.json',mode='wb'))
     else:
+        print(f",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,{file_dic[hashed_temp]}.................................................")
         reportID=file_dic[hashed_temp]
-    foreignReport=Report.objects.get(Report_ID = reportID)
+        foreignReport=Report.objects.get(Report_ID = reportID)
     if  (request.user.is_authenticated):
         Sample.objects.create(ReportID = foreignReport, Privacy_Type =privacy, Create_Date =current_time, Sample_Type ='file', Sample_Address = hashed_temp,UserID=request.user,Sample_name=temp)
     else:
@@ -78,11 +81,14 @@ def getreport():
         print("no tasks waiting")
         return
     try:
-        print(task_queue)
-        REST_URL = f"http://localhost:8900/tasks/report/{task_queue[0]}"
+
+        print(task_queue[0][0])
+        REST_URL = f"http://localhost:8900/tasks/report/{task_queue[0][0]}"
         HEADERS = {"Authorization": "Bearer 4THnM7z6a1T3NcqP8KHUGg"}
         r = requests.get(REST_URL, headers=HEADERS )
+        
         score = float(r.json()["info"]["score"])*10
+        print(score)
         processes = r.json()['behavior']['processes']
         network = r.json()['network']['domains']
         duration=r.json()['info']['duration']
@@ -91,13 +97,14 @@ def getreport():
             processes_json.append({'pid':process['pid'],"process_name":process['process_name'],'command_line':process['command_line']})
         print(score)
         
-        Report.objects.filter(Report_ID = task_queue[0]).update(Network=network,Processes=processes_json,Duration=duration,Score=score)
+        Report.objects.filter(Report_ID = task_queue[0][1]).update(Network=network,Processes=processes_json,Duration=duration,Score=score)
         
         
         task_queue.pop(0)
         print(task_queue)
-        
+    
     except:
+
         print(f"{task_queue[0]} is not ready")
 
 def start():
@@ -121,12 +128,12 @@ def checkDublicateFiles(address):
 	else: return False
 
 
-def file_api(file):
+def file_api(file,report_ID):
     REST_URL = "http://localhost:8900/tasks/create/file"
     HEADERS = {"Authorization": "Bearer 4THnM7z6a1T3NcqP8KHUGg"}
     sample=file.open(mode="rb")
     files = {"file": (str(file), sample)}
     r = requests.post(REST_URL, headers=HEADERS, files=files,timeout=10)
     taskID=r.json()['task_id']
-    task_queue.append(taskID)
+    task_queue.append((taskID,report_ID))
     return taskID

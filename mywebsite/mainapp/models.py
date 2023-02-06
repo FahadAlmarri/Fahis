@@ -2,17 +2,19 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Report(models.Model):
-	Report_ID = models.IntegerField('Report ID', unique=True)
+	Report_ID=models.BigAutoField("id",unique=True,primary_key=True,auto_created=True)
 	Score = models.IntegerField('Score',null=True)
 	Network = models.JSONField('Network',null=True)
 	Duration = models.IntegerField('Duration',null=True)
 	Processes = models.JSONField('Processes',null=True)
-	Report_Type = models.CharField("Report Type", max_length=5)
-	Report_Address = models.TextField("Report Address")
+	Report_Type = models.CharField("Report_Type", max_length=5)
+	Report_Address = models.TextField("Report_Address")
 	
 
 	def __int__(self):
 		return self.Report_ID
+
+
 
 
 # class FahisUser(models.Model):
@@ -28,11 +30,11 @@ class Report(models.Model):
 class Sample(models.Model):
 	id=models.BigAutoField("id",unique=True,primary_key=True,auto_created=True)
 	ReportID = models.ForeignKey(Report,to_field="Report_ID", null=True,on_delete=models.CASCADE)
-	Privacy_Type = models.CharField('Privacy Type', max_length=8)
-	Create_Date = models.DateTimeField('Creation Date')
-	Sample_Type = models.CharField("Sample Type", max_length=5)
+	Privacy_Type = models.CharField('Privacy_Type', max_length=8)
+	Create_Date = models.DateTimeField('Creation_Date')
+	Sample_Type = models.CharField("Sample_Type", max_length=5)
 	UserID = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
-	Sample_Address = models.TextField("Sample Address", null=True)
+	Sample_Address = models.TextField("Sample_Address", null=True)
 	Sample_name=models.TextField("Sample_name",null=True)
 	def __int__(self):
 		return self.Sample_ID

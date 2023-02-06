@@ -87,3 +87,9 @@ networkButton.addEventListener('click',()=>{
         
     }
 });
+/------- details content-------------/
+
+
+const ip = document.querySelectorAll('.ip').forEach(function(element){
+    if (element.innerText == "") element.innerText = "-";
+  });

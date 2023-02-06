@@ -13,7 +13,6 @@ from .apiFunc import uploadfile
 def report(request,sampleID):
 	#report=getreport(reportID)
 	sample = Sample.objects.get(id=sampleID)
-	
 	report=Report.objects.get(Report_ID=sample.ReportID)
 	
 	context={"sample":sample, "report":report}
