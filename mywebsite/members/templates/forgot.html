@@ -40,14 +40,18 @@
   </nav>
 
   <form method="post">
+    {% csrf_token %}
     <div class="login-box forgot-box">
         <h1>طلب كلمة مرور جديدة</h1>
         <div>
-              البريد الإلكتروني
-              <br><br>
-              {% csrf_token %}
-              {{form.email}}
+          <h3 class="text"><sup>*</sup>
+            البريد الإلكتروني
+          </h3>
+          <div class="field-container">
+            {{form.email}}
+            <img src="{% static 'images/mail.svg' %}" class="mail"></img>
           </div>
+        </div>
 
           <button class="main-button">موافق</button>
         </form>

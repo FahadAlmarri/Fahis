@@ -6,10 +6,10 @@ from django import forms
 class RegisterUserForm(UserCreationForm):
     email = forms.EmailField(widget=forms.EmailInput(attrs={'class':'text-field form-control','placeholder' : 'البريد الإلكتروني'} ))
     first_name = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'class':'text-field','placeholder' : 'الاسم الأول'}))
-    last_name = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'class':'text-field'}))
-    username = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'class':'text-field'}))
-    password1 = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'class':'text-field',"id":"password-field"}))
-    password2 = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'class':'text-field'}))
+    last_name = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'class':'text-field','placeholder' : 'الاسم الأخير'}))
+    username = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'class':'text-field','placeholder' : 'اسم المستخدم'}))
+    password1 = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'class':'text-field',"id":"password-field", 'type':'password'}))
+    password2 = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'class':'text-field','type':'password'}))
 
     class Meta:
         model = User
@@ -22,3 +22,22 @@ class RegisterUserForm(UserCreationForm):
         self.fields['password1'].widget.attrs['class'] = 'text-field'
         self.fields['password1'].widget.attrs['id'] = 'password-field'
         self.fields['password2'].widget.attrs['class'] = 'text-field'
+
+
+# forms.py
+
+from django.contrib.auth.forms import PasswordResetForm
+
+class UserPasswordResetForm(PasswordResetForm):
+    def __init__(self, *args, **kwargs):
+        super(UserPasswordResetForm, self).__init__(*args, **kwargs)
+
+    email = forms.EmailField(label='', widget=forms.EmailInput(attrs={
+        'class': 'text-field',
+        'placeholder': 'البريد الإلكتروني',
+        'type': 'email',
+        'name': 'email'
+        }))
+
+# urls.py
+

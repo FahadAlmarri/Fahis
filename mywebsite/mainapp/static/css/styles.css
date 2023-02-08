@@ -22,7 +22,7 @@ body{
 input{
     font-size: 1.2rem;
     text-align: right;
-    padding: 0 1.2rem;
+    padding: 0 1.2rem !important;
     outline: none;
     
     outline-color: #702dc844 ;
@@ -30,7 +30,7 @@ input{
 }
 
 input:hover{
-    border-color:#702dc8c0;
+    border-color:#702dc8c0 ;
 }
 
 input:focus{
@@ -135,9 +135,6 @@ a:hover{
     .right-side{
         gap: 1rem;
     }
-
-   
-    
     
 }
 
@@ -666,6 +663,7 @@ hr{
     width: 90%;
     margin: 0 auto;
 }
+
 .processes-table tbody{
   
 }
@@ -941,10 +939,66 @@ table tbody tr td:first-child {
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-  }
+}
 
+  div.dataTables_filter {
+    padding-top: 0.55em;
+    
+    height: 48px;
+    max-width: 680px;
+    position: relative;
+    display: flex;
+   
+    margin-bottom: 2.5rem;
+    float: none !important;
+    padding: 0 !important;
+}
+div.dataTables_filter label{
+    
+    background-image:  url('ready.PNG');
+    background-repeat: no-repeat;
+    height: 48px;
+    width: 48px;
+    color: rgba(0, 0, 0, 0);
+    margin: 0 !important;
+    z-index: 5;
+    
+}
 
-  
+div.dataTables_filter input{
+    
+    height: 48;
+    width: 100% !important;
+    border: 1px solid rgba(0, 0, 0, 0.2) ;
+    background-color:  #E5E8EB !important;
+    direction: rtl;
+    position: absolute;
+    top: 0;
+    left: 48px;
+    border-radius: 0 !important;
+    margin: 0 !important;
+}
+
+div.dataTables_filter input:hover{
+    border-color:#702dc8c0 ;
+}
+
+div.dataTables_filter input:focus{
+    transition: 75ms ease-in-out;
+    outline: #702dc844 2px solid;
+    border-color:#712dc8;
+    
+}
+
+.dataTables_length{
+    float: right !important;
+    display: none;
+
+}
+
+.sorting{
+    text-align: center !important;
+}
 /*----------- login -----------*/
 .login-box{
     width: 800px;

@@ -4,7 +4,7 @@
 <head>
   <title>Result page</title>
   <link rel="stylesheet" href="{% static 'css/styles.css' %}  ">
-
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 </head>
 
 <body>
@@ -30,7 +30,7 @@
       <a href="/history">
         <div class="history">
           <div class="history-text">
-            الفحوصات 
+            الفحوصات
           </div>
           <img class="folder" src="{% static '/images/folder.svg' %}" alt="">
         </div>
@@ -81,7 +81,9 @@
             <span class="cell-span"> مدة الفحص
             </span>
             <br>
-             {{report.Duration}} ثانية
+            <div id="duration">
+              {{report.Duration}} ثانية
+            </div>
           </h3>
           <img class="bottom-icons" src="{% static 'images/duration.svg' %}" alt="">
         </div>
@@ -133,6 +135,7 @@
           <td>سطر الأمر</td>
           <td>اسم العملية</td>
           <td>معرف العملية</td>
+          <td>ترتيب العملية</td>
         </tr>
       </thead>
       <tbody>
@@ -141,6 +144,7 @@
           <td>{{process.command_line}}</td>
           <td>{{process.process_name}}</td>
           <td>{{process.pid}}</td>
+          <td class="counter"></td>
         </tr>
         {%endfor%}
       </tbody>
@@ -161,7 +165,7 @@
         {%endfor%}
       </tbody>
     </table>
-    
+
   </div>
   <script src="{% static 'js/result.js' %}"></script>
 </body>

@@ -5,6 +5,37 @@
   <title>History</title>
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+  <script>
+
+    $(document).ready(function () {
+      $('#example').DataTable({
+        info: false,
+
+        language: {
+          paginate: {
+            previous: 'السابق',
+            next: 'التالي'
+          },
+          aria: {
+            paginate: {
+              previous: 'Previous',
+              next: 'Next'
+            }
+          },
+          zeroRecords: "لا يوجد",
+
+        },
+
+
+
+      });
+      $(".dataTables_filter input").attr("placeholder", "البحث");
+    });
+
+  </script>
 </head>
 
 <body>
@@ -30,7 +61,7 @@
       <a href="/history">
         <div class="history">
           <div class="history-text">
-            الفحوصات 
+            الفحوصات
           </div>
           <img class="folder" src="{% static '/images/folder.svg' %}" alt="">
         </div>
@@ -46,25 +77,22 @@
         فحوصات عامة
       </div>
       <div class="your-history">
-       
-          فحوصاتك
-       
+
+        فحوصاتك
+
       </div>
 
     </div>
-    <form method="post">
+
     <div class="history-bottom-box">
+      <!--
       <div class="search-container">
         <button type="submit" class="search-button">
           <img class="search-icon" src="{% static 'images/search.svg' %}" alt="">
         </button>
-        {% csrf_token %}
-        <input name="hash" class="search-field" type="text" placeholder="
-                البحث
-                "></input>
-        </form>
-      </div>
-      <table>
+        <input class="search-field" type="text" placeholder="البحث"></input>
+      </div> -->
+      <table id="example" class="display" style="width:100%;">
         <thead>
           <tr>
             <td>التقرير</td>
@@ -89,7 +117,7 @@
             <td>ويندوز 7</td>
             <td>ملف</td>
             <td>{{sample.Sample_Address}}</td>
-           
+
           </tr>
           {% endfor %}
 
@@ -101,14 +129,14 @@
             <td><a href="/report/{{sample.id}}">
                 اضغط هنا
               </a>
-              <td>
-                <div class="table-result">{{sample.ReportID.Score}}</div>
-              </td>
-              <td>{{sample.Create_Date}}</td>
-              <td>ويندوز 7</td>
-              <td>ملف</td>
-              <td>{{sample.Sample_Address}}</td>
-             
+            <td>
+              <div class="table-result">{{sample.ReportID.Score}}</div>
+            </td>
+            <td>{{sample.Create_Date}}</td>
+            <td>ويندوز 7</td>
+            <td>ملف</td>
+            <td>{{sample.Sample_Address}}</td>
+
           </tr>
           {% endfor %}
 
@@ -117,7 +145,7 @@
       </table>
     </div>
   </div>
-
+  </div>
   <script type="text/javascript" src="{% static 'js/history.js' %}"></script>
 </body>
 
