@@ -26,7 +26,7 @@ class RegisterUserForm(UserCreationForm):
 
 # forms.py
 
-from django.contrib.auth.forms import PasswordResetForm
+from django.contrib.auth.forms import PasswordResetForm, SetPasswordForm
 
 class UserPasswordResetForm(PasswordResetForm):
     def __init__(self, *args, **kwargs):
@@ -38,6 +38,21 @@ class UserPasswordResetForm(PasswordResetForm):
         'type': 'email',
         'name': 'email'
         }))
+
+class UserSetPasswordForm(SetPasswordForm):
+    def __init__(self, *args, **kwargs):
+        super(UserSetPasswordForm, self).__init__(*args, **kwargs)
+
+    new_password1 = forms.CharField(
+        label=("كلمة مرور جديدة"),
+        widget=forms.PasswordInput(attrs={'placeholder': 'كلمة مرور جديدة', 'class': 'text-field'}),
+        
+    )
+    new_password2 = forms.CharField(
+        label=("تأكيد كلمة المرور"),
+        strip=False,
+        widget=forms.PasswordInput(attrs={'placeholder': 'تأكيد كلمة المرور', 'class': 'text-field'}),
+    )
 
 # urls.py
 
