@@ -1,8 +1,9 @@
-from django.shortcuts import render, HttpResponseRedirect, redirect
+from django.shortcuts import render, HttpResponseRedirect, redirect,HttpResponse
 from .models import *
 import pickle
 from django.urls import reverse
 from .apiFunc import uploadfile
+
 
 
 
@@ -82,5 +83,30 @@ def forgot(request):
 
 
 # Add your code to error checking for r.status_code.
+def apiUpload(request):
+	# if request.method =="POST":
+	# 	try:
 
+	# 		uploaded_file=request.FILES['file']
+	# 		sampleID=uploadfile(uploaded_file,request)
+	# 		return JsonResponse({"resultID":sampleID})
+	# 	except:
+	# 		return JsonResponse({"error":"please upload a file"})
+
+	# return JsonResponse({'error':'invalid request method'})
+	return HttpResponse("")
+
+def apiResult(request):
+	# if request.method =="POST":
+	# 	resultID=request.post.get("resultID")
+	# 	try:
+
+	# 		reportID=Sample.objects.get(id=resultID).ReportID
+	# 		report=Report.objects.get(Report_ID=reportID)
+	# 		return JsonResponse({'score':report.Score,'network':report.Network,'processes':report.Processes,'duration':report.Duration})
+	# 	except:
+	# 		return JsonResponse({'error':'the id does not exist'})
+			
+	# return JsonResponse({'error':'invalid request method'})
+	return HttpResponse("")
 	

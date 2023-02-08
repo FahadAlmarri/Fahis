@@ -16,24 +16,26 @@ task_queue=[]
 def uploadURL(url,privacy,request):
 
     
-    url_queue.append(url)
+    
 
 
     current_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     if(checkDublicateFiles(url)==False):
+        
         params = {'apikey': 'b230a88ab3d6f90eaa945eaec05eea799676f78a1c1559bb245a67820b6eacbb', 'url':url}
         requests.post(url, data=params)
-        
-        file_dic[url]=reportID
-        Report.objects.create(Report_ID = reportID,Report_Address=hashed_temp,Report_Type="file")
+        Report.objects.create(Report_Address=url,Report_Type="url")
+        foreignReport=Report.objects.get(Report_Address=url)
+        file_dic[url]=foreignReport.Report_ID
+        url_queue.append((url,foreignReport.Report_ID))
         pickle.dump(file_dic,open('file_dic.json',mode='wb'))
     else:
-        reportID=file_dic[hashed_temp]
-    foreignReport=Report.objects.get(Report_ID = reportID)
+        
+        foreignReport=Report.objects.get(Report_Address=url)
     if  (request.user.is_authenticated):
-        Sample.objects.create(ReportID = foreignReport, Privacy_Type =privacy, Create_Date =current_time, Sample_Type ='file', Sample_Address = hashed_temp,UserID=request.user,Sample_name=temp)
+        Sample.objects.create(ReportID = foreignReport, Privacy_Type =privacy, Create_Date =current_time, Sample_Type ='url', Sample_Address = url,UserID=request.user,Sample_name=url)
     else:
-        Sample.objects.create(ReportID = foreignReport, Privacy_Type ="public", Create_Date =current_time, Sample_Type ='file', Sample_Address = hashed_temp,Sample_name=temp)
+        Sample.objects.create(ReportID = foreignReport, Privacy_Type ="public", Create_Date =current_time, Sample_Type ='url', Sample_Address = url,Sample_name=url)
 
     
     last_added_sample=Sample.objects.filter(ReportID=foreignReport).latest("id")
@@ -74,8 +76,44 @@ def uploadfile(temp,privacy,request):
     last_added_sample=Sample.objects.filter(ReportID=foreignReport).latest("id")
     print(last_added_sample)
     return last_added_sample.id
+def getUrlReport():
+    
+    if len(url_queue) ==0:
+        print("no url tasks waiting")
+        return
+    try:
 
-def getreport():
+        print(url_queue[0][0])
+
+        url = "https://www.virustotal.com/api/v3/urls/id"
+
+        headers = {"accept": "application/json"}
+
+        r = requests.get(url, headers=headers)
+
+        
+        
+        
+        score = float(r.json()["info"]["score"])*10
+        print(score)
+        processes = r.json()['behavior']['processes']
+        network = r.json()['network']['domains']
+        duration=r.json()['info']['duration']
+        processes_json=[]
+        for process in processes:
+            processes_json.append({'pid':process['pid'],"process_name":process['process_name'],'command_line':process['command_line']})
+        print(score)
+        
+        Report.objects.filter(Report_ID = url_queue[0][1]).update(Network=network,Processes=processes_json,Duration=duration,Score=score)
+        
+        
+        url_queue.pop(0)
+        print(f"url queue : {url_queue}")
+    
+    except:
+
+        print(f" url {url_queue[0]} is not ready")
+def getFileReport():
     
     if len(task_queue) ==0:
         print("no tasks waiting")
@@ -109,7 +147,8 @@ def getreport():
 
 def start():
     schedular= BackgroundScheduler()
-    schedular.add_job(getreport,'interval',seconds=10)
+    schedular.add_job(getFileReport,'interval',seconds=10)
+    schedular.add_job(getUrlReport,'interval',seconds=10)
     schedular.start()
 	
 
