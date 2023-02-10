@@ -11,7 +11,7 @@
   <script>
 
     $(document).ready(function () {
-      $('#example').DataTable({
+      $('#example-public').DataTable({
         info: false,
 
         language: {
@@ -35,6 +35,33 @@
       $(".dataTables_filter input").attr("placeholder", "البحث");
     });
 
+    
+    $(document).ready(function () {
+      $('#example-private').DataTable({
+        info: false,
+
+        language: {
+          paginate: {
+            previous: 'السابق',
+            next: 'التالي'
+          },
+          aria: {
+            paginate: {
+              previous: 'Previous',
+              next: 'Next'
+            }
+          },
+          zeroRecords: "لا يوجد",
+
+        },
+
+
+
+      });
+      $(".dataTables_filter input").attr("placeholder", "البحث");
+    });
+  
+  
   </script>
 </head>
 
@@ -84,15 +111,8 @@
 
     </div>
 
-    <div class="history-bottom-box">
-      <!--
-      <div class="search-container">
-        <button type="submit" class="search-button">
-          <img class="search-icon" src="{% static 'images/search.svg' %}" alt="">
-        </button>
-        <input class="search-field" type="text" placeholder="البحث"></input>
-      </div> -->
-      <table id="example" class="display" style="width:100%;">
+    <div class="history-bottom-box public-history">
+      <table id="example-public" class="display" style="width:100%;">
         <thead>
           <tr>
             <td>التقرير</td>
@@ -104,7 +124,7 @@
             <td>اسم العينة</td>
           </tr>
         </thead>
-        <tbody class="public-history">
+        <tbody>
           {% for sample in sample_list %}
           <tr>
             <td><a href="/report/{{sample.id}}">
@@ -124,7 +144,22 @@
 
 
         </tbody>
-        <tbody class="private-history">
+      </table>
+    </div>
+    <div class="history-bottom-box private-history">
+      <table id="example-private" class="display" style="width:100%;">
+        <thead>
+          <tr>
+            <td>التقرير</td>
+            <td>النتيجة</td>
+            <td>تاريخ الطلب</td>
+            <td>بيئة التحليل</td>
+            <td>نوع الطلب</td>
+            <td style="display:none;">عنوان العينة</td>
+            <td>اسم العينة</td>
+          </tr>
+        </thead>
+        <tbody>
           {% for sample in user_list %}
           <tr>
             <td><a href="/report/{{sample.id}}">

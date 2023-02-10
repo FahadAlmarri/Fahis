@@ -497,6 +497,8 @@ h1{
     align-items: center;
     flex-direction: column;
     gap: 3.5rem;
+    padding-bottom:1.5rem;
+    box-sizing: border-box;
     
 }
 

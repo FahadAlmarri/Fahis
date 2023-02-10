@@ -6,7 +6,7 @@ urlpatterns = [
     path('report/<int:sampleID>', views.report, name="report"),
     path('history', views.history, name='history'),
     path('forgot', views.forgot, name='forgot'),
-    path('api/upload', views.apiUpload, name='apiUpload'),
-    path('api/result', views.apiResult, name='apiResult'),
+    # path('api/upload', views.apiUpload, name='apiUpload'),
+    # path('api/result', views.apiResult, name='apiResult'),
 ]
 

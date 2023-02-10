@@ -5,9 +5,9 @@ from django.urls import reverse
 from .apiFunc import uploadfile,task_screenshots
 import requests
 from django.http import JsonResponse
-from rest_framework.response import Response
-from rest_framework.decorators import api_view
-from rest_framework.request import Request
+# from rest_framework.response import Response
+# from rest_framework.decorators import api_view
+# from rest_framework.request import Request
 
 # Create your views here.
 
@@ -68,34 +68,34 @@ def forgot(request):
 
 
 # Add your code to error checking for r.status_code.
-@api_view(["POST"])	
-def apiUpload(request):
+# @api_view(["POST"])	
+# def apiUpload(request):
 
+# 	# try:
+
+# 		uploaded_file=(request.data)["file"]
+# 		environment=(request.data)["environment"]
+		
+		
+# 		print(uploaded_file)
+# 		sampleID=uploadfile(temp=uploaded_file,request=request,environment=environment,privacy="public")
+# 		return Response({"resultID":sampleID})
+# 	# except:
+# 	# 	return Response({"error":"please upload a file"})
+
+	
+
+# @api_view(["POST"])	
+# def apiResult(request):
+	
+	# resultID=(request.data)["resultID"]
+	
 	# try:
-
-		uploaded_file=(request.data)["file"]
-		environment=(request.data)["environment"]
-		
-		
-		print(uploaded_file)
-		sampleID=uploadfile(temp=uploaded_file,request=request,environment=environment,privacy="public")
-		return Response({"resultID":sampleID})
+	# 	reportID=Sample.objects.get(id=resultID).ReportID
+	# 	report=Report.objects.get(Report_ID=reportID)
+	# 	return Response({'score':report.Score,'network':report.Network,'processes':report.Processes,'duration':report.Duration})
 	# except:
-	# 	return Response({"error":"please upload a file"})
-
-	
-
-@api_view(["POST"])	
-def apiResult(request):
-	
-		resultID=(request.data)["resultID"]
-		
-		try:
-			reportID=Sample.objects.get(id=resultID).ReportID
-			report=Report.objects.get(Report_ID=reportID)
-			return Response({'score':report.Score,'network':report.Network,'processes':report.Processes,'duration':report.Duration})
-		except:
-			return Response({'error':'the id does not exist'})
+	# 	return Response({'error':'the id does not exist'})
 			
 	# return JsonResponse({'error':'invalid request method'})
 	
