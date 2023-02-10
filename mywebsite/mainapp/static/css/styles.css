@@ -1134,3 +1134,21 @@ div.dataTables_filter input:focus{
 .forgot-box{
     height: max-content;
 }
+
+
+/*-------- set password *******/
+
+.set-password-input{
+    text-align: center;
+    outline: none;
+    border: none;
+    font-size: 1.2rem;
+}
+
+.register-box form p{
+    padding: 0.5rem 0;
+}
+
+.register-box p input{
+    margin-top: 0.5rem;
+}
