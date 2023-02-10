@@ -45,16 +45,16 @@
         <h1>العنوان</h1>
         <div class="result-title">
           <div class="row-container">
-            <h3 class="boldh3">SHA256</h3>
+            <h2 class="boldh2">اسم العينة</h2>
             <div class="hash">
-              <h3 class="row-text"> {{sample.Sample_Address}}
+              <h3 class="row-text"> {{sample.Sample_name}}
               </h3>
             </div>
           </div>
           <div class="row-container">
-            <h2 class="boldh2">الرابط</h2>
+            <h3 class="boldh3">SHA256</h3>
             <div class="hash">
-              <h3 class="row-text"> لا يوجد
+              <h3 class="row-text"> {{sample.Sample_Address}}
               </h3>
             </div>
           </div>
@@ -94,7 +94,7 @@
                 بيئة التحليل
               </span>
               <br>
-              Windows 7
+              {{sample.Environment}}
               <img class="windows" src="{% static 'images/windows.svg' %}" alt="">
             </h3>
           </div>
@@ -170,4 +170,8 @@
   <script src="{% static 'js/result.js' %}"></script>
 </body>
 
+<form style="width:100%;" method="post" enctype="multipart/form-data">
+{% csrf_token %}
+<button class="main-button" type="submit">show pictures</button>
+</form>
 </html>

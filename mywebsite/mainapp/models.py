@@ -9,7 +9,7 @@ class Report(models.Model):
 	Processes = models.JSONField('Processes',null=True)
 	Report_Type = models.CharField("Report_Type", max_length=5)
 	Report_Address = models.TextField("Report_Address")
-	
+	task_id=models.IntegerField("task_id",null=True)
 
 	def __int__(self):
 		return self.Report_ID
@@ -36,5 +36,6 @@ class Sample(models.Model):
 	UserID = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
 	Sample_Address = models.TextField("Sample_Address", null=True)
 	Sample_name=models.TextField("Sample_name",null=True)
+	Environment=models.TextField("Environment",null=True)
 	def __int__(self):
 		return self.Sample_ID

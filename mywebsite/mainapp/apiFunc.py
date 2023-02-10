@@ -6,6 +6,15 @@ from django.urls import reverse
 from .models import *
 import time
 import datetime
+import os
+from os import listdir
+
+
+
+import base64
+
+
+
 
 file_dic=pickle.load(open('file_dic.json',mode='rb'))
 url_queue=[]
@@ -50,16 +59,16 @@ def uploadURL(url,privacy,request):
 
 
     
-def uploadfile(temp,privacy,request):
+def uploadfile(temp,privacy,request,environment):
     
     hashed_temp = hash(temp)
     print(hashed_temp)
     current_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     if(checkDublicateFiles(hashed_temp)==False):
-        Report.objects.create(Report_Address=hashed_temp,Report_Type="file")
+        task_id=file_api(temp)
+        Report.objects.create(Report_Address=hashed_temp,Report_Type="file",task_id=task_id)
         foreignReport=Report.objects.get(Report_Address=hashed_temp)
-
-        file_api(temp,foreignReport.Report_ID)
+        task_queue.append((task_id,foreignReport.Report_ID))
         print(foreignReport.Report_ID)
         file_dic[hashed_temp]=foreignReport.Report_ID
         pickle.dump(file_dic,open('file_dic.json',mode='wb'))
@@ -68,9 +77,9 @@ def uploadfile(temp,privacy,request):
         reportID=file_dic[hashed_temp]
         foreignReport=Report.objects.get(Report_ID = reportID)
     if  (request.user.is_authenticated):
-        Sample.objects.create(ReportID = foreignReport, Privacy_Type =privacy, Create_Date =current_time, Sample_Type ='file', Sample_Address = hashed_temp,UserID=request.user,Sample_name=temp)
+        Sample.objects.create(ReportID = foreignReport, Privacy_Type =privacy, Create_Date =current_time, Sample_Type ='file', Sample_Address = hashed_temp,UserID=request.user,Sample_name=temp,Environment=environment)
     else:
-        Sample.objects.create(ReportID = foreignReport, Privacy_Type ="public", Create_Date =current_time, Sample_Type ='file', Sample_Address = hashed_temp,Sample_name=temp)
+        Sample.objects.create(ReportID = foreignReport, Privacy_Type ="public", Create_Date =current_time, Sample_Type ='file', Sample_Address = hashed_temp,Sample_name=temp,Environment=environment)
 
     
     last_added_sample=Sample.objects.filter(ReportID=foreignReport).latest("id")
@@ -167,12 +176,35 @@ def checkDublicateFiles(address):
 	else: return False
 
 
-def file_api(file,report_ID):
+def file_api(file):
     REST_URL = "http://localhost:8900/tasks/create/file"
     HEADERS = {"Authorization": "Bearer 4THnM7z6a1T3NcqP8KHUGg"}
     sample=file.open(mode="rb")
     files = {"file": (str(file), sample)}
     r = requests.post(REST_URL, headers=HEADERS, files=files,timeout=10)
     taskID=r.json()['task_id']
-    task_queue.append((taskID,report_ID))
+    
     return taskID
+
+
+
+
+def task_screenshots(task_id=0):
+    folder_path = f"/home/fahad/.cuckoo/storage/analyses/{task_id}/shots/"
+    sceenshots=[]
+    if not os.path.exists(folder_path):
+        return (404, "Task not found")
+    for image in listdir(folder_path):
+        if "small" not in image:
+            image_path=f"{folder_path}{image}"
+            with open (image_path,"rb") as f:
+                image_read=f.read()
+            image_b64=base64.b64encode(image_read).decode("utf-8")
+            sceenshots.append(image_b64)
+        # TODO: Add content disposition.
+    #screenshot = open(folder_path, "rb").read()
+    
+    return sceenshots
+
+
+#print("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh",task_screenshots())

@@ -100,7 +100,8 @@
             <td>تاريخ الطلب</td>
             <td>بيئة التحليل</td>
             <td>نوع الطلب</td>
-            <td>الهدف</td>
+            <td style="display:none;">عنوان العينة</td>
+            <td>اسم العينة</td>
           </tr>
         </thead>
         <tbody class="public-history">
@@ -114,10 +115,10 @@
               <div class="table-result">{{sample.ReportID.Score}}</div>
             </td>
             <td>{{sample.Create_Date}}</td>
-            <td>ويندوز 7</td>
-            <td>ملف</td>
-            <td>{{sample.Sample_Address}}</td>
-
+            <td style="font-family:sans-serif;">{{sample.Environment}}</td>
+            <td>{{sample.Sample_Type}}</td>
+            <td style="display:none;">{{sample.Sample_Address}}</td>
+            <td style="font-family:sans-serif;">{{sample.Sample_name}}</td>
           </tr>
           {% endfor %}
 
@@ -133,9 +134,10 @@
               <div class="table-result">{{sample.ReportID.Score}}</div>
             </td>
             <td>{{sample.Create_Date}}</td>
-            <td>ويندوز 7</td>
-            <td>ملف</td>
-            <td>{{sample.Sample_Address}}</td>
+            <td style="font-family:sans-serif;">{{sample.Environment}}</td>
+            <td>{{sample.Sample_Type}}</td>
+            <td style="display:none;">{{sample.Sample_Address}}</td>
+            <td style="font-family:sans-serif;">{{sample.Sample_name}}</td>
 
           </tr>
           {% endfor %}
