@@ -41,8 +41,6 @@ def home(request):
 		# if uploaded_url == None or uploaded_url=="":
 		
 		uploaded_file=request.FILES['file']
-		print(type(open("D:\\kUniversity\\zBackups\\cuckoo.png","rb")))
-		print(type(uploaded_file.file))
 		sampleID=uploadfile(uploaded_file,privacy,request,environment)
 		# else:
 		# 	url = 'https://www.virustotal.com/vtapi/v2/url/scan'

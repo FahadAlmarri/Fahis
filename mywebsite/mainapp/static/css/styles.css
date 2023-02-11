@@ -614,7 +614,7 @@ h1{
 .report-details{
     background-color: white;
     display: block;
-    height: 500px;
+    height: 600px;
     width: 94%;
     margin: 0 auto;
     border-radius: 8px;
@@ -624,7 +624,10 @@ h1{
     margin-bottom: 5rem;
    
 }
-
+.screenshots-table{
+    padding: 0 10rem;
+    box-sizing: border-box;
+}
 .report-details-nav{
     display: flex;
     justify-content: flex-end;

@@ -183,7 +183,7 @@ def file_api(file):
     files = {"file": (str(file), sample)}
     r = requests.post(REST_URL, headers=HEADERS, files=files,timeout=10)
     taskID=r.json()['task_id']
-    
+    print(f"\n\n\n\nthe task id of the specified file is {taskID}")
     return taskID
 
 
@@ -208,3 +208,7 @@ def task_screenshots(task_id=0):
 
 
 #print("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh",task_screenshots())
+REST_URL = f"http://localhost:8900/tasks/report/120"
+HEADERS = {"Authorization": "Bearer 4THnM7z6a1T3NcqP8KHUGg"}
+r=requests.get(REST_URL, headers=HEADERS )
+print(r.json())
