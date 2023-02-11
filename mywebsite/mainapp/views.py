@@ -17,19 +17,16 @@ def report(request,sampleID):
 	#report=getreport(reportID)
 	sample = Sample.objects.get(id=sampleID)
 	report=Report.objects.get(Report_ID=sample.ReportID)
-	if(request.method=='POST'):
-		context=task_screenshots(report.task_id)
-		
-		return render(request,'frontend/screenshots.html',{"screenshots":context})
+	
 		
 	if sample.Privacy_Type== 'private':
 		if request.user == sample.UserID:
-			context={"sample":sample, "report":report}
+			context={"sample":sample, "report":report,"screenshots":task_screenshots(report.task_id)}
 			return render(request,'frontend/result.html',context)
 		else:
 			return redirect('history')
 	else:
-		context={"sample":sample, "report":report}
+		context={"sample":sample, "report":report,"screenshots":task_screenshots(report.task_id)}
 		return render(request,'frontend/result.html',context)
 
 def home(request):

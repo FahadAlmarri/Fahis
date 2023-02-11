@@ -52,34 +52,64 @@ function result_ranges(green, red) {
 /*----- details navbar */
 const processesButton = document.getElementsByClassName("processes-button")[0];
 const networkButton = document.getElementsByClassName("network-button")[0];
+const screenshotsButton = document.getElementsByClassName("screenshots-button")[0];
+
 const processesTable = document.getElementsByClassName("processes-table")[0];
 const networkTable = document.getElementsByClassName("network-table")[0];
+const screenshotsTable = document.getElementsByClassName("screenshots-table")[0];
+
 
 networkTable.style.display = "none";
+screenshotsTable.style.display = "none";
+
+networkButton.style.color = "black";
+screenshotsButton.style.color = "black";
 
 processesButton.addEventListener("click", () => {
-  if (networkButton.style.color != "black") {
+  if (processesButton.style.color == "black") {
     processesTable.style.removeProperty("display");
     networkTable.style.display = "none";
+    screenshotsTable.style.display = "none";
 
     processesButton.style.borderBottom = "2px solid #712dc8";
     processesButton.style.color = "#712dc8";
 
     networkButton.style.border = "none";
     networkButton.style.color = "black";
+    screenshotsButton.style.border = "none";
+    screenshotsButton.style.color = "black";
+  }
+});
+
+screenshotsButton.addEventListener("click", () => {
+  if (screenshotsButton.style.color == "black") {
+    screenshotsTable.style.removeProperty("display");
+    processesTable.style.display = "none";
+    networkTable.style.display = "none";
+
+    screenshotsButton.style.borderBottom = "2px solid #712dc8";
+    screenshotsButton.style.color = "#712dc8";
+
+    processesButton.style.border = "none";
+    processesButton.style.color = "black";
+    networkButton.style.border = "none";
+    networkButton.style.color = "black";
   }
 });
 
 networkButton.addEventListener("click", () => {
-  if (processesButton.style.color != "black") {
+  if (networkButton.style.color == "black") {
     networkTable.style.removeProperty("display");
     processesTable.style.display = "none";
+    screenshotsTable.style.display = "none";
 
     networkButton.style.borderBottom = "2px solid #712dc8";
     networkButton.style.color = "#712dc8";
 
     processesButton.style.border = "none";
     processesButton.style.color = "black";
+    screenshotsButton.style.border = "none";
+    screenshotsButton.style.color = "black";
   }
 });
 /*------- details content-------------*/

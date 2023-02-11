@@ -621,6 +621,7 @@ h1{
     box-sizing: border-box;
     padding: 1rem;
     overflow: auto;
+    margin-bottom: 5rem;
    
 }
 
