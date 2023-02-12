@@ -81,7 +81,7 @@ const tableDecisions = document
   .forEach(function (element) {
     score = element.innerHTML;
     console.log(score);
-    result_ranges(15, 50, element);
+    result_ranges(39, 69, element);
   });
 
 function result_ranges(green, red, element) {

@@ -1,0 +1,88 @@
+<html>
+{% load static %}
+
+<head>
+    <title>Upload File</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}  ">
+
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/default.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+
+</head>
+
+<body>
+
+    <nav class="header">
+        <div class="left-side">
+            <a href="#">
+                <div class=" language-en">
+                    <img class="language-pic" src="{% static '/images/language.svg' %}" alt="">
+                    <div class="en">English</div>
+                </div>
+            </a>
+            {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}">
+                <div class="login">تسجيل الخروج</div>
+            </a>
+            {% else %}
+            <a href="{% url 'login' %}">
+                <div class="login">تسجيل الدخول</div>
+            </a>
+            {% endif %}
+        </div>
+        <div class="right-side">
+            <a href="/api">
+                <div class="language">
+                    API
+                </div>
+            </a>
+            <a href="/history">
+                <div class="history">
+                    <div class="history-text">
+                        الفحوصات
+                    </div>
+                    <img class="folder" src="{% static '/images/folder.svg' %}" alt="">
+                </div>
+            </a>
+            <a href="/"><img class="logo" src="{% static 'images/fahis_logo.jpg' %}" alt="Fahis"></a>
+        </div>
+    </nav>
+    <div class="api-body">
+        <pre class="api-text"> 
+فاحص يتيح للمستخدمين الاساتفادة من خدمة فحص الملفات عن طريق الAPI.
+طريقة الاستخدام:
+تنقسم العملية الى قسمين:
+أولا, رفع الملف والحصول على المعرف. ويمكنك رفع الملف عن طريق الاتي:</pre>
+        <pre><code class="python">import requests
+REST_URL = "http://localhost:8000/api/upload"
+file=open("file path","rb")
+DATA={
+    "environment":"environment you want to use",
+}
+r = requests.post(REST_URL,files={"my_file":file},data=DATA)
+        </code></pre>
+
+        <p class="api-text">ثانيا, الحصول على نتيجة الفحص. ويمكنك الحصول على النتيجة عن طريق الاتي:
+<p>
+
+
+        <pre><code class="python">import requests
+REST_URL = "http://localhost:8000/api/result"
+            
+DATA={
+    "resultID":task id
+}
+            
+r = requests.post(REST_URL,data=DATA)
+            
+        </code></pre>
+        <!-- The code copy button -->
+       
+    </div>
+   
+</body>
+
+</html>

@@ -5,9 +5,9 @@ from django.urls import reverse
 from .apiFunc import uploadfile,task_screenshots
 import requests
 from django.http import JsonResponse
-# from rest_framework.response import Response
-# from rest_framework.decorators import api_view
-# from rest_framework.request import Request
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+from rest_framework.request import Request
 
 # Create your views here.
 
@@ -41,6 +41,7 @@ def home(request):
 		# if uploaded_url == None or uploaded_url=="":
 		
 		uploaded_file=request.FILES['file']
+
 		sampleID=uploadfile(uploaded_file,privacy,request,environment)
 		# else:
 		# 	url = 'https://www.virustotal.com/vtapi/v2/url/scan'
@@ -51,50 +52,56 @@ def home(request):
 def history(request): 
 	if not (request.user.is_authenticated):
 		sample_list = Sample.objects.filter(Privacy_Type="public")
-		print(sample_list)
+		
 		return render(request,'frontend/history.html', {'sample_list': sample_list})
 	else:
 		sample_list = Sample.objects.filter(Privacy_Type="public")
-		print(sample_list)
 		user_list = Sample.objects.filter(UserID_id=request.user)
-		print(user_list)
 		return render(request,'frontend/history.html', {'sample_list': sample_list,"user_list":user_list})
 	
 
-def forgot(request):
-	return render(request,'frontend/forgot.html')
+def custom404(request,exception=None):
+	return render(request,'frontend/page404.html')
 
 
-# Add your code to error checking for r.status_code.
-# @api_view(["POST"])	
-# def apiUpload(request):
-
-# 	# try:
-
-# 		uploaded_file=(request.data)["file"]
-# 		environment=(request.data)["environment"]
-		
-		
-# 		print(uploaded_file)
-# 		sampleID=uploadfile(temp=uploaded_file,request=request,environment=environment,privacy="public")
-# 		return Response({"resultID":sampleID})
-# 	# except:
-# 	# 	return Response({"error":"please upload a file"})
-
+def api(request):
+	return render(request,'frontend/api.html')
 	
+#Add your code to error checking for r.status_code.
+@api_view(["POST"])	
+def apiUpload(request):
 
-# @api_view(["POST"])	
-# def apiResult(request):
+
+	# uploaded_file=(request.data)["file"]
+	environment=(request.data)["environment"]
 	
-	# resultID=(request.data)["resultID"]
+	uploaded_file=request.FILES['my_file']
 	
-	# try:
-	# 	reportID=Sample.objects.get(id=resultID).ReportID
-	# 	report=Report.objects.get(Report_ID=reportID)
-	# 	return Response({'score':report.Score,'network':report.Network,'processes':report.Processes,'duration':report.Duration})
+	sampleID=uploadfile(temp=uploaded_file,request=request,environment=environment,privacy="public")
+
+
+	return Response({"resultID":sampleID})
 	# except:
-	# 	return Response({'error':'the id does not exist'})
+	# 	return Response({"error":"please upload a file"})
+
+	
+
+@api_view(["POST"])	
+def apiResult(request):
+	
+	resultID=(request.data)["resultID"]
+	
+	try:
+		sample=Sample.objects.get(id=resultID)
+		if sample.Privacy_Type=="public":
+			reportID=sample.ReportID
+			report=Report.objects.get(Report_ID=reportID)
+			return Response({'score':report.Score,'network':report.Network,'processes':report.Processes,'duration':report.Duration})
+		else:
+			return Response({"error":"sample is private"})
+	except:
+		return Response({'error':'the id does not exist'})
 			
-	# return JsonResponse({'error':'invalid request method'})
+	return JsonResponse({'error':'invalid request method'})
 	
 	
