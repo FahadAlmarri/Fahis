@@ -15,5 +15,6 @@ Reset password )
 ![image](https://user-images.githubusercontent.com/121561626/227509868-1616887f-c915-4ff0-bf17-73fbac6e6188.png)
 ![image](https://user-images.githubusercontent.com/93190617/227510622-2b105519-b1d1-476c-bcad-aff640c342b1.png)
 ![image](https://user-images.githubusercontent.com/93190617/227511199-92979ed5-ff27-4146-ac6e-8e2713ae0acd.png)
-![image](https://user-images.githubusercontent.com/93190617/227511283-be260a23-8032-48d1-ad68-c7c119218992.png)
 ![image](https://user-images.githubusercontent.com/93190617/227511356-225af547-a0d5-4146-aeaf-6eeb4fbb3a63.png)
+![image](https://user-images.githubusercontent.com/93190617/227511283-be260a23-8032-48d1-ad68-c7c119218992.png)
+
