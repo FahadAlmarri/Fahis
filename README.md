@@ -1,5 +1,11 @@
-# Fahis: A Dynamic Malware Analysis Website.
+# Fahis
 Fahis is a website built with the Django framework, it analyzes files
 using Cuckoo sandbox.
-Features: Account Management ( Register, Login, Logout, and
-Reset password ), personal history, public repository, and API.
+# Features  
+- Analyze files with Cuckoo Sandbox
+- Account Management ( Register, Login, Logout, and
+Reset password )
+- Personal History
+- Public Repository
+- Public API.
+# Sample run
